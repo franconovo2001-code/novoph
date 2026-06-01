@@ -64,7 +64,7 @@
   .section-title { font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700; color: var(--blanco); }
   .section-divider { flex: 1; height: 1px; background: rgba(200,16,46,0.25); }
 
-  .grid-masonry { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+  .-masonry { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
   .grid-masonry.eventos { grid-template-columns: repeat(2, 1fr); }
   .foto-card { position: relative; overflow: hidden; aspect-ratio: 3/4; cursor: pointer; background: var(--gris-medio); }
   .foto-card.wide { grid-column: span 2; aspect-ratio: 16/9; }
@@ -252,38 +252,25 @@
     </div>
     <div class="section-divider"></div>
   </div>
-  <div class="grid-masonry">
-    <div class="foto-card wide">
-      <img src="fotos/por2.jpg" alt="Cantante fondo rojo" />
-      <div class="foto-overlay"><span class="foto-label">Tuli Acosta</span></div>
+ <div class="grid-masonry">
+    <div class="foto-card" style="position:relative;">
+      <img src="fotos/por 16.jpg" alt="Niñas escribiendo en marcha" />
+      <div class="foto-overlay"><span class="foto-label">Nunca más</span></div>
+      <span class="badge-premio">★ Seleccionada</span>
+    </div>
+    <div class="foto-card" style="position:relative;">
+      <img src="fotos/por 17.jpg" alt="Pareja tomados de la mano" />
+      <div class="foto-overlay"><span class="foto-label">Tomados de la mano</span></div>
+      <span class="badge-premio">★ Premiada</span>
+    </div>
+    <div class="foto-card" style="position:relative;">
+      <img src="fotos/por 18.jpg" alt="Taxista en Bolivia" />
+      <div class="foto-overlay"><span class="foto-label">Bolivia — trabajo & ciudad</span></div>
+      <span class="badge-premio">★ Mención de honor</span>
     </div>
     <div class="foto-card">
-      <img src="fotos/por1.jpg" alt="Cantante folklórica" />
-      <div class="foto-overlay"><span class="foto-label">Maggie Cullen</span></div>
-    </div>
-    <div class="foto-card">
-      <img src="fotos/por4.jpg" alt="Guitarrista contraluz" />
-      <div class="foto-overlay"><span class="foto-label">Atmósfera</span></div>
-    </div>
-    <div class="foto-card">
-      <img src="fotos/por3.jpg" alt="Público" />
-      <div class="foto-overlay"><span class="foto-label">El público</span></div>
-    </div>
-    <div class="foto-card">
-      <img src="fotos/POR 5.jpg" alt="Cantante vestido rojo" />
-      <div class="foto-overlay"><span class="foto-label">Momento íntimo</span></div>
-    </div>
-    <div class="foto-card">
-      <img src="fotos/POR 7.jpg" alt="Cantante luz morada" />
-      <div class="foto-overlay"><span class="foto-label">Luz & emoción</span></div>
-    </div>
-    <div class="foto-card">
-      <img src="fotos/POR 8.jpg" alt="Cantante en escena" />
-      <div class="foto-overlay"><span class="foto-label">Escena</span></div>
-    </div>
-    <div class="foto-card">
-      <img src="fotos/por 6.jpg" alt="Alan Lez" />
-      <div class="foto-overlay"><span class="foto-label">Alan Lez</span></div>
+      <img src="fotos/por 19.jpg" alt="Cementerio y montañas Bolivia" />
+      <div class="foto-overlay"><span class="foto-label">Quebrada — paisaje & memoria</span></div>
     </div>
   </div>
 </section>

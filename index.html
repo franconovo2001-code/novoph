@@ -65,6 +65,9 @@
   .section-divider { flex: 1; height: 1px; background: rgba(200,16,46,0.25); }
 
   .grid-masonry { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
+ .grid-documental { display: grid; grid-template-columns: repeat(2, 1fr);gap: 10px; }
+ .grid-documental .foto-card { aspect-ratio: auto; }
+ .grid-documental .foto-card img { width: 100%; height: auto;display: block; }
   .grid-masonry.eventos { grid-template-columns: repeat(2, 1fr); }
   .foto-card { position: relative; overflow: hidden; aspect-ratio: 3/4; cursor: pointer; background: var(--gris-medio); }
   .foto-card.wide { grid-column: span 2; aspect-ratio: 16/9; }
@@ -357,7 +360,7 @@
     <div class="section-divider"></div>
   </div>
   <!-- CORRECCIÓN: faltaba el > de cierre del div -->
-  <div class="grid-masonry">
+  <div class="grid-documental">
     <div class="foto-card wide" style="position:relative;">
       <img src="fotos/por 16.jpg" alt="Niñas escribiendo en marcha" />
       <div class="foto-overlay"><span class="foto-label">Nunca más</span></div>

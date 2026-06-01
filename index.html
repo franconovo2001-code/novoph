@@ -61,7 +61,7 @@
   .section-divider { flex: 1; height: 1px; background: rgba(200,16,46,0.25); }
 
   .grid-masonry { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-  .grid-masonry.eventos { grid-template-columns: repeat(4, 1fr); }
+  .grid-masonry.eventos { >grid-template-columns: repeat(2, 1fr); }
   .foto-card { position: relative; overflow: hidden; aspect-ratio: 3/4; cursor: pointer; background: var(--gris-medio); }
   .foto-card.wide { grid-column: span 2; aspect-ratio: 16/9; }
   .foto-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease, filter 0.4s ease; filter: grayscale(10%) contrast(1.05); }
@@ -288,7 +288,6 @@
     <div class="section-divider"></div>
   </div>
   <div class="grid-masonry eventos">
-     grid-template-columns: repeat(2, 1fr);
 
     <div class="foto-card wide">
       <img src="fotos/por 9.jpg" alt="Evento corporativo" />
@@ -344,7 +343,7 @@
     </div>
     <div class="section-divider"></div>
   </div>
-  <div class="grid-masonry">grid-template-columns: repeat(2, 1fr);
+  <div class="grid-masonry"
 
     <!-- FOTO PREMIADA — el badge ★ Premiada aparece automático -->
     <div class="foto-card wide" style="position:relative;">

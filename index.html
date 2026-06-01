@@ -5,6 +5,10 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Franco Novo — Fotografía & Audiovisual</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- FAVICON generado con SVG — no necesita archivo externo -->
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0a0a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='13' font-weight='900' fill='%23C8102E'>FN</text></svg>">
+
 <style>
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
   :root {
@@ -61,7 +65,7 @@
   .section-divider { flex: 1; height: 1px; background: rgba(200,16,46,0.25); }
 
   .grid-masonry { display: grid; grid-template-columns: repeat(3, 1fr); gap: 6px; }
-  .grid-masonry.eventos { >grid-template-columns: repeat(2, 1fr); }
+  .grid-masonry.eventos { grid-template-columns: repeat(2, 1fr); }
   .foto-card { position: relative; overflow: hidden; aspect-ratio: 3/4; cursor: pointer; background: var(--gris-medio); }
   .foto-card.wide { grid-column: span 2; aspect-ratio: 16/9; }
   .foto-card img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform 0.6s ease, filter 0.4s ease; filter: grayscale(10%) contrast(1.05); }
@@ -84,6 +88,7 @@
   .video-tipo { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rojo); margin-bottom: 0.3rem; }
   .video-titulo { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: var(--blanco); margin-bottom: 0.5rem; }
 
+  /* SOBRE MÍ */
   .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
   .sobre-texto p { font-size: 1rem; line-height: 1.9; color: rgba(245,240,235,0.75); margin-bottom: 1.2rem; }
   .sobre-texto p strong { color: var(--blanco); font-weight: 500; }
@@ -91,7 +96,49 @@
   .stat { background: var(--negro); padding: 1.5rem; text-align: center; }
   .stat-num { font-family: 'Playfair Display', serif; font-size: 2.5rem; font-weight: 900; color: var(--rojo); display: block; line-height: 1; margin-bottom: 0.4rem; }
   .stat-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--texto-muted); }
-  .sobre-identidad { padding-top: 1rem; }
+
+  /* FOTO DE PERFIL */
+  .sobre-derecha { display: flex; flex-direction: column; gap: 3rem; }
+  .perfil-foto-wrap {
+    position: relative;
+    width: 100%;
+    max-width: 320px;
+  }
+  .perfil-foto-wrap::before {
+    content: '';
+    position: absolute;
+    top: 12px; left: 12px;
+    right: -12px; bottom: -12px;
+    border: 1px solid var(--rojo);
+    opacity: 0.4;
+    pointer-events: none;
+  }
+  .perfil-foto {
+    width: 100%;
+    aspect-ratio: 4/5;
+    object-fit: cover;
+    object-position: center top;
+    display: block;
+    filter: grayscale(15%) contrast(1.05);
+  }
+  /* Placeholder si no hay foto aún */
+  .perfil-placeholder {
+    width: 100%;
+    max-width: 320px;
+    aspect-ratio: 4/5;
+    background: var(--gris-medio);
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0.7rem;
+    color: var(--texto-muted);
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    border: 1px dashed rgba(255,255,255,0.1);
+  }
+  .perfil-placeholder svg { width: 36px; height: 36px; opacity: 0.25; }
+
+  .sobre-identidad { padding-top: 0; }
   .identidad-item { display: flex; gap: 1.5rem; margin-bottom: 2.5rem; align-items: flex-start; }
   .identidad-num { font-family: 'Playfair Display', serif; font-size: 1.8rem; font-weight: 900; color: var(--rojo); opacity: 0.5; min-width: 2rem; line-height: 1.2; }
   .identidad-texto strong { display: block; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blanco); margin-bottom: 0.4rem; }
@@ -146,9 +193,8 @@
   </svg>
 </div>
 
-<!-- ===================== NAVEGACIÓN ===================== -->
+<!-- NAVEGACIÓN -->
 <nav>
-  <!-- EDITABLE: tu nombre en el logo -->
   <a href="#inicio" class="nav-logo">Franco <span>Novo</span></a>
   <ul class="nav-links">
     <li><a href="#musica">Música</a></li>
@@ -160,19 +206,12 @@
   </ul>
 </nav>
 
-<!-- ===================== HERO ===================== -->
+<!-- HERO -->
 <section id="inicio" class="hero" style="padding:0; position:relative;">
   <div class="hero-left">
-    <!-- EDITABLE: subtítulo del hero -->
     <p class="hero-eyebrow">Fotografía & Audiovisual</p>
-    <h1 class="hero-title">
-      <!-- EDITABLE: tu nombre grande -->
-      Franco<br><em>Novo</em>
-    </h1>
-    <!-- EDITABLE: descripción breve del hero -->
-    <p class="hero-bio">
-      Fotografía de música en vivo, eventos y documental. Estudiante de Artes Audiovisuales con raíces en lo originario — me gusta honrar lo que siempre estuvo.
-    </p>
+    <h1 class="hero-title">Franco<br><em>Novo</em></h1>
+    <p class="hero-bio">Fotografía de música en vivo, eventos y documental. Estudiante de Artes Audiovisuales con raíces en lo originario — me gusta honrar lo que siempre estuvo.</p>
     <div class="hero-cta">
       <a href="https://franconovo.myportfolio.com/proyectos" class="btn-primary">Ver portfolio</a>
       <a href="#contacto" class="btn-outline">Contacto</a>
@@ -181,16 +220,13 @@
   <div class="hero-right">
     <div style="display:grid; grid-template-rows: 60% 40%; height:100vh;">
       <div style="overflow:hidden;">
-        <!-- EDITABLE: foto principal del hero — reemplazá la ruta con tu imagen -->
         <img src="fotos/por2.jpg" alt="Cantante en escena" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(1.1);" />
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; height:100%;">
         <div style="overflow:hidden;">
-          <!-- EDITABLE: foto secundaria hero izquierda -->
           <img src="fotos/por1.jpg" alt="Cantante folklórica" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(1.1);" />
         </div>
         <div style="overflow:hidden;">
-          <!-- EDITABLE: foto secundaria hero derecha -->
           <img src="fotos/por4.jpg" alt="Guitarrista" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(1.1);" />
         </div>
       </div>
@@ -200,7 +236,7 @@
   <div class="hero-line"></div>
 </section>
 
-<!-- ===================== SECCIÓN 01 — MÚSICA ===================== -->
+<!-- MÚSICA -->
 <section id="musica" style="position:relative;">
   <div class="section-deco" aria-hidden="true">
     <svg viewBox="0 0 1200 600" fill="none" preserveAspectRatio="xMidYMid slice">
@@ -211,67 +247,48 @@
   <div class="section-header">
     <span class="section-number">01</span>
     <div class="section-title-group">
-      <!-- EDITABLE: subtítulo y título de la sección -->
       <p class="section-eyebrow">Fotografía de conciertos</p>
       <h2 class="section-title">Música en vivo</h2>
     </div>
     <div class="section-divider"></div>
   </div>
   <div class="grid-masonry">
-
     <div class="foto-card wide">
-      <!-- EDITABLE: reemplazá src con la ruta de tu foto. El texto en foto-label aparece al hacer hover. -->
       <img src="fotos/por2.jpg" alt="Cantante fondo rojo" />
       <div class="foto-overlay"><span class="foto-label">Tuli Acosta</span></div>
     </div>
-
     <div class="foto-card">
       <img src="fotos/por1.jpg" alt="Cantante folklórica" />
       <div class="foto-overlay"><span class="foto-label">Maggie Cullen</span></div>
     </div>
-
     <div class="foto-card">
       <img src="fotos/por4.jpg" alt="Guitarrista contraluz" />
       <div class="foto-overlay"><span class="foto-label">Atmósfera</span></div>
     </div>
-
     <div class="foto-card">
       <img src="fotos/por3.jpg" alt="Público" />
       <div class="foto-overlay"><span class="foto-label">El público</span></div>
     </div>
-
     <div class="foto-card">
       <img src="fotos/POR 5.jpg" alt="Cantante vestido rojo" />
       <div class="foto-overlay"><span class="foto-label">Momento íntimo</span></div>
     </div>
-
     <div class="foto-card">
       <img src="fotos/POR 7.jpg" alt="Cantante luz morada" />
       <div class="foto-overlay"><span class="foto-label">Luz & emoción</span></div>
     </div>
-
     <div class="foto-card">
       <img src="fotos/POR 8.jpg" alt="Cantante en escena" />
       <div class="foto-overlay"><span class="foto-label">Escena</span></div>
     </div>
-
     <div class="foto-card">
       <img src="fotos/por 6.jpg" alt="Alan Lez" />
       <div class="foto-overlay"><span class="foto-label">Alan Lez</span></div>
     </div>
-
-    <!-- EDITABLE: para agregar más fotos, copiá un bloque .foto-card y cambiá src y alt -->
-    <!-- EJEMPLO:
-    <div class="foto-card">
-      <img src="fotos/tu-foto-nueva.jpg" alt="Descripción" />
-      <div class="foto-overlay"><span class="foto-label">Tu etiqueta</span></div>
-    </div>
-    -->
-
   </div>
 </section>
 
-<!-- ===================== SECCIÓN 02 — EVENTOS ===================== -->
+<!-- EVENTOS -->
 <section id="eventos" style="background: var(--gris); padding-top: 7rem; padding-bottom: 7rem; position:relative;">
   <div class="section-deco" aria-hidden="true">
     <svg viewBox="0 0 1200 600" fill="none" preserveAspectRatio="xMidYMid slice">
@@ -288,46 +305,38 @@
     <div class="section-divider"></div>
   </div>
   <div class="grid-masonry eventos">
-
     <div class="foto-card wide">
       <img src="fotos/por 9.jpg" alt="Evento corporativo" />
       <div class="foto-overlay"><span class="foto-label">Evento corporativo</span></div>
     </div>
-
     <div class="foto-card">
       <img src="fotos/por 10.jpg" alt="Retrato social" />
       <div class="foto-overlay"><span class="foto-label">Retrato social</span></div>
     </div>
-
     <div class="foto-card">
       <img src="fotos/por 11.jpg" alt="Retrato" />
       <div class="foto-overlay"><span class="foto-label">Retrato</span></div>
     </div>
-
     <div class="foto-card wide">
       <img src="fotos/por 12.jpg" alt="Speaker" />
       <div class="foto-overlay"><span class="foto-label">Speaker</span></div>
     </div>
-
     <div class="foto-card wide">
       <img src="fotos/por 14.jpg" alt="Evento grupal" />
       <div class="foto-overlay"><span class="foto-label">Evento institucional</span></div>
     </div>
-
     <div class="foto-card">
       <img src="fotos/por 15.jpg" alt="Ambiente nocturno" />
       <div class="foto-overlay"><span class="foto-label">Ambiente nocturno</span></div>
     </div>
-
-   <div class="foto-card wide">
+    <div class="foto-card wide">
       <img src="fotos/por 13.jpg" alt="Panelista" />
       <div class="foto-overlay"><span class="foto-label">Panelista</span></div>
     </div>
-
   </div>
 </section>
 
-<!-- ===================== SECCIÓN 03 — DOCUMENTAL ===================== -->
+<!-- DOCUMENTAL -->
 <section id="documental" style="position:relative;">
   <div class="section-deco" aria-hidden="true">
     <svg viewBox="0 0 1200 700" fill="none" preserveAspectRatio="xMidYMid slice">
@@ -343,39 +352,31 @@
     </div>
     <div class="section-divider"></div>
   </div>
-  <div class="grid-masonry"
-
-    <!-- FOTO PREMIADA — el badge ★ Premiada aparece automático -->
+  <!-- CORRECCIÓN: faltaba el > de cierre del div -->
+  <div class="grid-masonry">
     <div class="foto-card wide" style="position:relative;">
       <img src="fotos/por 16.jpg" alt="Niñas escribiendo en marcha" />
       <div class="foto-overlay"><span class="foto-label">Nunca más</span></div>
       <span class="badge-premio">★ Seleccionada</span>
     </div>
-
-    <!-- FOTO PREMIADA ANCHA -->
     <div class="foto-card wide" style="position:relative;">
       <img src="fotos/por 17.jpg" alt="Pareja tomados de la mano" />
       <div class="foto-overlay"><span class="foto-label">Tomados de la mano</span></div>
       <span class="badge-premio">★ Premiada</span>
     </div>
-
-    <div class="foto-card wide">
+    <div class="foto-card wide" style="position:relative;">
       <img src="fotos/por 18.jpg" alt="Taxista en Bolivia" />
       <div class="foto-overlay"><span class="foto-label">Bolivia — trabajo & ciudad</span></div>
-     <span class="badge-premio">★ Mencion de honor</span>
+      <span class="badge-premio">★ Mención de honor</span>
     </div>
-
     <div class="foto-card wide">
       <img src="fotos/por 19.jpg" alt="Cementerio y montañas Bolivia" />
       <div class="foto-overlay"><span class="foto-label">Quebrada — paisaje & memoria</span></div>
     </div>
-
-    <!-- EDITABLE: para agregar más fotos documentales, copiá un bloque aquí -->
-
   </div>
 </section>
 
-<!-- ===================== SECCIÓN 04 — AUDIOVISUAL ===================== -->
+<!-- AUDIOVISUAL -->
 <section id="audiovisual" style="background: var(--gris); padding-top: 7rem; padding-bottom: 7rem; position:relative;">
   <div class="section-deco" aria-hidden="true">
     <svg viewBox="0 0 1200 500" fill="none" preserveAspectRatio="xMidYMid slice">
@@ -392,24 +393,20 @@
     <div class="section-divider"></div>
   </div>
   <div class="audio-grid">
-
     <div class="video-card">
       <div class="video-thumb">
         <div style="width:100%;height:100%;background:#111;display:flex;align-items:center;justify-content:center;">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1"><path d="m15 10-4 2.5v-5L15 10z"/><rect x="2" y="5" width="20" height="14" rx="2"/></svg>
         </div>
-        <!-- EDITABLE: reemplazá el href con tu link de YouTube o Vimeo -->
         <a href="https://franconovo.myportfolio.com/cafe-san-bernardo-direccion-de-fotografia" target="_blank" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
           <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
       </div>
       <div class="video-info">
-        <!-- EDITABLE: tipo y título del video -->
         <p class="video-tipo">Dirección de fotografía</p>
-        <p class="video-titulo">Proyecto 1</p>
+        <p class="video-titulo">Café San Bernardo</p>
       </div>
     </div>
-
     <div class="video-card">
       <div class="video-thumb">
         <div style="width:100%;height:100%;background:#111;display:flex;align-items:center;justify-content:center;">
@@ -420,30 +417,29 @@
         </a>
       </div>
       <div class="video-info">
-        <p class="video-tipo">Edición</p>
-        <p class="video-titulo">Reel 2025</p>
+        <p class="video-tipo">Dirección de fotografía</p>
+        <p class="video-titulo">Domingo — Corto</p>
       </div>
     </div>
-
     <div class="video-card">
       <div class="video-thumb">
         <div style="width:100%;height:100%;background:#111;display:flex;align-items:center;justify-content:center;">
           <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#444" stroke-width="1"><path d="m15 10-4 2.5v-5L15 10z"/><rect x="2" y="5" width="20" height="14" rx="2"/></svg>
         </div>
+        <!-- EDITABLE: tercer video -->
         <a href="https://youtube.com/TU-LINK-AQUI" target="_blank" style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;">
           <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
         </a>
       </div>
       <div class="video-info">
         <p class="video-tipo">Dirección de fotografía</p>
-        <p class="video-titulo">Proyecto 2</p>
+        <p class="video-titulo">Proyecto 3</p>
       </div>
     </div>
-
   </div>
 </section>
 
-<!-- ===================== SECCIÓN 05 — SOBRE MÍ ===================== -->
+<!-- SOBRE MÍ -->
 <section id="sobre-mi" style="position:relative;">
   <div class="section-deco" aria-hidden="true">
     <svg viewBox="0 0 1200 600" fill="none" preserveAspectRatio="xMidYMid slice">
@@ -461,78 +457,82 @@
   </div>
   <div class="sobre-grid">
     <div class="sobre-texto">
-      <!-- EDITABLE: los tres párrafos de tu bio -->
-      <p>
-        Soy <strong>Franco Novo</strong>, fotógrafo y estudiante de Artes Audiovisuales. Mi trabajo vive entre el escenario y la calle, entre la luz artificial y la natural que cae sobre una plaza en la tarde.
-      </p>
-      <p>
-        Me formé mirando, escuchando y eligiendo quedarse con lo que importa. Creo que <strong>una foto tiene que sentirse antes de verse</strong>. Por eso trabajo desde adentro — cerca de los músicos, cerca de la gente, cerca del momento antes de que el momento ocurra.
-      </p>
-      <p>
-        Mi identidad está anclada en lo originario. El folclore, el tango, las raíces. No como nostalgia sino como <strong>punto de partida</strong>. Lo que siempre estuvo, merece ser visto.
-      </p>
+      <p>Soy <strong>Franco Novo</strong>, fotógrafo y estudiante de Artes Audiovisuales. Mi trabajo vive entre el escenario y la calle, entre la luz artificial y la natural que cae sobre una plaza en la tarde.</p>
+      <p>Me formé mirando, escuchando y eligiendo quedarse con lo que importa. Creo que <strong>una foto tiene que sentirse antes de verse</strong>. Por eso trabajo desde adentro — cerca de los músicos, cerca de la gente, cerca del momento antes de que el momento ocurra.</p>
+      <p>Mi identidad está anclada en lo originario. El folclore, el tango, las raíces. No como nostalgia sino como <strong>punto de partida</strong>. Lo que siempre estuvo, merece ser visto.</p>
       <div class="sobre-stats">
-        <!-- EDITABLE: los cuatro números y etiquetas -->
         <div class="stat"><span class="stat-num">3+</span><span class="stat-label">Años de trabajo</span></div>
         <div class="stat"><span class="stat-num">2</span><span class="stat-label">Fotos premiadas</span></div>
         <div class="stat"><span class="stat-num">3</span><span class="stat-label">Muestras</span></div>
         <div class="stat"><span class="stat-num">∞</span><span class="stat-label">Escenas vividas</span></div>
       </div>
     </div>
-    <div class="sobre-identidad">
-      <!-- EDITABLE: los cuatro servicios -->
-      <div class="identidad-item">
-        <span class="identidad-num">I</span>
-        <div class="identidad-texto">
-          <strong>Música en vivo</strong>
-          <p>Cobertura de recitales, festivales y shows íntimos. Desde el pit hasta el fondo del estadio.</p>
-        </div>
+
+    <!-- COLUMNA DERECHA: foto de perfil + servicios -->
+    <div class="sobre-derecha">
+
+      <!-- FOTO DE PERFIL -->
+      <!-- EDITABLE: cuando tengas una foto tuya, reemplazá el bloque .perfil-placeholder
+           por este img:
+           <div class="perfil-foto-wrap">
+             <img src="fotos/perfil.jpg" alt="Franco Novo" class="perfil-foto" />
+           </div>
+      -->
+      <div class="perfil-foto-wrap">
+        <img src="fotos/perfil.jpg" alt="Franco Novo" class="perfil-foto"
+          onerror="this.parentElement.innerHTML='<div class=\'perfil-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg><span>Tu foto acá</span><span style=\'font-size:0.6rem;opacity:0.5\'>fotos/perfil.jpg</span></div>'" />
       </div>
-      <div class="identidad-item">
-        <span class="identidad-num">II</span>
-        <div class="identidad-texto">
-          <strong>Eventos</strong>
-          <p>Cobertura corporativa y social. Registro de momentos que importan para tu marca o institución.</p>
+
+      <div class="sobre-identidad">
+        <div class="identidad-item">
+          <span class="identidad-num">I</span>
+          <div class="identidad-texto">
+            <strong>Música en vivo</strong>
+            <p>Cobertura de recitales, festivales y shows íntimos. Desde el pit hasta el fondo del estadio.</p>
+          </div>
         </div>
-      </div>
-      <div class="identidad-item">
-        <span class="identidad-num">III</span>
-        <div class="identidad-texto">
-          <strong>Documental</strong>
-          <p>Fotografía social y de archivo. Mirada que construye relato, no solo registro.</p>
+        <div class="identidad-item">
+          <span class="identidad-num">II</span>
+          <div class="identidad-texto">
+            <strong>Eventos</strong>
+            <p>Cobertura corporativa y social. Registro de momentos que importan para tu marca o institución.</p>
+          </div>
         </div>
-      </div>
-      <div class="identidad-item">
-        <span class="identidad-num">IV</span>
-        <div class="identidad-texto">
-          <strong>Audiovisual</strong>
-          <p>Dirección de fotografía y edición para producciones de cine, publicidad y contenido digital.</p>
+        <div class="identidad-item">
+          <span class="identidad-num">III</span>
+          <div class="identidad-texto">
+            <strong>Documental</strong>
+            <p>Fotografía social y de archivo. Mirada que construye relato, no solo registro.</p>
+          </div>
+        </div>
+        <div class="identidad-item">
+          <span class="identidad-num">IV</span>
+          <div class="identidad-texto">
+            <strong>Audiovisual</strong>
+            <p>Dirección de fotografía y edición para producciones de cine, publicidad y contenido digital.</p>
+          </div>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ===================== CONTACTO ===================== -->
+<!-- CONTACTO -->
 <section id="contacto" class="contacto-section" style="position:relative;">
   <div class="contacto-inner">
-    <!-- EDITABLE: título y subtítulo de contacto -->
     <h2 class="contacto-title">Trabajemos<br><em>juntos.</em></h2>
     <p class="contacto-sub">Si tenés un show, evento o proyecto audiovisual, escribime.</p>
     <div class="contacto-links">
       <div class="contacto-item">
         <span class="contacto-tipo">Email</span>
-        <!-- EDITABLE: tu email (en dos lugares: href y el texto visible) -->
         <a href="mailto:franconovo2001@gmail.com" class="contacto-valor">franconovo2001@gmail.com</a>
       </div>
       <div class="contacto-item">
         <span class="contacto-tipo">Instagram</span>
-        <!-- EDITABLE: tu instagram -->
         <a href="https://instagram.com/_novoph" target="_blank" class="contacto-valor">@_novoph</a>
       </div>
       <div class="contacto-item">
         <span class="contacto-tipo">Teléfono</span>
-        <!-- EDITABLE: tu teléfono -->
         <a href="tel:+542324672431" class="contacto-valor">+54 2324 672431</a>
       </div>
     </div>
@@ -540,9 +540,8 @@
   </div>
 </section>
 
-<!-- ===================== FOOTER ===================== -->
+<!-- FOOTER -->
 <footer>
-  <!-- EDITABLE: tu nombre y ciudad -->
   <div class="footer-logo">Franco <span>Novo</span></div>
   <p class="footer-copy">Fotografía & Audiovisual — Buenos Aires, Argentina</p>
 </footer>

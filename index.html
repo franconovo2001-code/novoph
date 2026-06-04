@@ -24,8 +24,6 @@
   .nav-links { display: flex; gap: 2rem; list-style: none; }
   .nav-links a { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.3s; }
   .nav-links a:hover { color: var(--rojo); }
-
-  /* HAMBURGER MOBILE */
   .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
   .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--blanco); transition: all 0.3s; }
   .nav-hamburger.abierto span:nth-child(1) { transform: rotate(45deg) translate(5px, 5px); }
@@ -81,7 +79,7 @@
   /* VIDEOS */
   .audio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
   .reels-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-bottom: 4rem; }
-  .video-card { background: var(--gris); border: 1px solid rgba(255,255,255,0.06); overflow: hidden; transition: border-color 0.3s; cursor: pointer; border-radius: 2px; }
+  .video-card { background: var(--gris); border: 1px solid rgba(255,255,255,0.06); overflow: hidden; transition: border-color 0.3s; cursor: pointer; }
   .video-card:hover { border-color: var(--rojo); }
   .video-thumb { aspect-ratio: 16/9; background: var(--gris-medio); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .video-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.3s; }
@@ -92,6 +90,14 @@
   .video-info { padding: 1rem 1.2rem; }
   .video-tipo { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rojo); margin-bottom: 0.3rem; }
   .video-titulo { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: var(--blanco); line-height: 1.3; }
+
+  /* CARRUSEL MOBILE (reels) */
+  .reels-carousel { display: none; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 1rem; padding-bottom: 1rem; margin-bottom: 2.5rem; scrollbar-width: none; }
+  .reels-carousel::-webkit-scrollbar { display: none; }
+  .reels-carousel .video-card { flex: 0 0 72vw; scroll-snap-align: center; }
+  .carousel-dots { display: none; justify-content: center; gap: 6px; margin-bottom: 2.5rem; }
+  .carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gris-medio); border: 1px solid rgba(255,255,255,0.2); transition: background 0.3s; cursor: pointer; }
+  .carousel-dot.activo { background: var(--rojo); border-color: var(--rojo); }
 
   /* SOBRE MÍ */
   .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
@@ -106,16 +112,13 @@
   .perfil-foto-wrap::before { content: ''; position: absolute; top: 12px; left: 12px; right: -12px; bottom: -12px; border: 1px solid var(--rojo); opacity: 0.4; pointer-events: none; }
   .perfil-foto { width: 100%; aspect-ratio: 4/5; object-fit: cover; object-position: center top; display: block; filter: grayscale(15%) contrast(1.05); }
   .perfil-placeholder { width: 100%; aspect-ratio: 4/5; background: var(--gris-medio); display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.7rem; color: var(--texto-muted); font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; border: 1px dashed rgba(255,255,255,0.1); }
-  .sobre-identidad { }
   .identidad-item { display: flex; gap: 1.2rem; margin-bottom: 1.8rem; align-items: flex-start; }
-  .identidad-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--rojo); opacity: 0.5; min-width: 1.8rem; line-height: 1.2; flex-shrink: 0; }
+  .identidad-num { font-family: 'Playfair Display', serif; font-size: 1.5rem; font-weight: 900; color: var(--rojo); opacity: 0.5; min-width: 2.5rem; line-height: 1.2; flex-shrink: 0; }
   .identidad-texto strong { display: block; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--blanco); margin-bottom: 0.3rem; }
   .identidad-texto p { font-size: 0.82rem; color: var(--texto-muted); line-height: 1.6; }
- .portfolio-link {  margin-top: 3rem;  text-align: center; }
-
-.portfolio-btn {  font-family: 'Playfair Display', serif;  font-size: 1.2rem;  color: var(--blanco);  text-decoration: none;  border-bottom: 1px solid var(--rojo);  padding-bottom: 0.3rem;  transition: color .3s ease; }
-
-.portfolio-btn:hover {  color: var(--rojo); }
+  /* Botón ver proyectos en sobre mí */
+  .btn-proyectos { display: inline-block; margin-top: 0.5rem; background: transparent; color: var(--blanco); border: 1px solid rgba(200,16,46,0.5); padding: 0.75rem 1.5rem; font-family: 'DM Sans', sans-serif; font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase; text-decoration: none; transition: all 0.3s; }
+  .btn-proyectos:hover { background: var(--rojo); border-color: var(--rojo); }
 
   /* CONTACTO */
   .contacto-section { background: var(--gris); border-top: 3px solid var(--rojo); }
@@ -138,81 +141,86 @@
   .subsection-label { font-size: 0.65rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--rojo); margin-bottom: 1.5rem; display: flex; align-items: center; gap: 1rem; }
   .subsection-label::before { content: ''; display: block; width: 24px; height: 1px; background: var(--rojo); }
 
-  /* MODAL */
+  /* MODAL CON NAVEGACIÓN */
   .modal-overlay { display: none; position: fixed; inset: 0; background: rgba(0,0,0,0.95); z-index: 999; align-items: center; justify-content: center; padding: 1rem; }
   .modal-overlay.activo { display: flex; }
-  .modal-inner { position: relative; width: 100%; max-width: 900px; }
-  .modal-inner.vertical { max-width: min(400px, 90vw); }
+  .modal-wrapper { position: relative; width: 100%; max-width: 960px; display: flex; align-items: center; gap: 1rem; }
+  .modal-wrapper.vertical { max-width: min(420px, 92vw); }
+  .modal-inner { position: relative; flex: 1; }
   .modal-video { position: relative; padding-bottom: 56.25%; height: 0; }
-  .modal-inner.vertical .modal-video { padding-bottom: 177.78%; }
+  .modal-wrapper.vertical .modal-video { padding-bottom: 177.78%; }
   .modal-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
-  .modal-cerrar { position: absolute; top: -3rem; right: 0; background: rgba(200,16,46,0.15); border: 1px solid rgba(200,16,46,0.4); color: var(--blanco); font-size: 1.2rem; cursor: pointer; line-height: 1; opacity: 0.9; transition: all 0.2s; font-family: sans-serif; padding: 0.5rem 0.9rem; border-radius: 2px; }
-  .modal-cerrar:hover { background: var(--rojo); opacity: 1; }
+  .modal-top-bar { position: absolute; top: -3rem; left: 0; right: 0; display: flex; justify-content: space-between; align-items: center; }
+  .modal-info { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: rgba(255,255,255,0.5); }
+  .modal-cerrar { background: rgba(200,16,46,0.15); border: 1px solid rgba(200,16,46,0.4); color: var(--blanco); font-size: 0.75rem; letter-spacing: 0.1em; cursor: pointer; padding: 0.45rem 1rem; transition: all 0.2s; font-family: 'DM Sans', sans-serif; text-transform: uppercase; }
+  .modal-cerrar:hover { background: var(--rojo); border-color: var(--rojo); }
+  .modal-nav { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.1); color: var(--blanco); width: 44px; height: 44px; display: flex; align-items: center; justify-content: center; cursor: pointer; transition: all 0.25s; flex-shrink: 0; font-size: 1.2rem; }
+  .modal-nav:hover { background: var(--rojo); border-color: var(--rojo); }
+  .modal-nav:disabled { opacity: 0.2; cursor: default; pointer-events: none; }
+  .modal-nav.oculto { visibility: hidden; }
 
   /* RESPONSIVE MOBILE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
-
     .hero { grid-template-columns: 1fr; min-height: 100svh; }
     .hero-right { display: none; }
     .hero-left { padding: 7rem 1.5rem 4rem; }
     .hero-title { font-size: clamp(3rem, 12vw, 4.5rem); }
-
     section { padding: 4rem 1.5rem; }
-
     .section-header { gap: 1rem; margin-bottom: 2.5rem; }
     .section-number { font-size: 2.5rem; }
     .section-title { font-size: 1.6rem; }
     .section-divider { display: none; }
-
     .grid-masonry { grid-template-columns: 1fr 1fr; gap: 4px; }
     .grid-masonry.eventos { grid-template-columns: 1fr; }
-    .foto-card.wide { grid-column: span 2; }
     .grid-masonry.eventos .foto-card.wide { grid-column: span 1; aspect-ratio: 4/3; }
-
     .grid-documental { grid-template-columns: 1fr; gap: 6px; }
-
-    .reels-grid { grid-template-columns: repeat(2, 1fr); gap: 0.8rem; margin-bottom: 2.5rem; }
-
+    /* reels: esconder grilla, mostrar carrusel */
+    .reels-grid { display: none; }
+    .reels-carousel { display: flex; }
+    .carousel-dots { display: flex; }
     .audio-grid { grid-template-columns: 1fr !important; gap: 1rem; }
-
-    /* sobre mi mobile: stack vertical */
     .sobre-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .sobre-derecha { gap: 2rem; }
     .perfil-foto-wrap { max-width: 150px; margin: 0; }
     .sobre-stats { grid-template-columns: 1fr 1fr; }
     .stat { padding: 1rem; }
     .stat-num { font-size: 2rem; }
-
     .contacto-title { font-size: 2.2rem; }
     .contacto-links { gap: 1.2rem; }
     .contacto-valor { font-size: 0.85rem; word-break: break-all; }
-
     footer { flex-direction: column; gap: 0.8rem; text-align: center; padding: 1.5rem; }
-
-    /* modal mobile: pantalla completa para vertical */
-    .modal-inner.vertical { max-width: 100%; }
-    .modal-cerrar { top: -2.8rem; font-size: 1rem; padding: 0.4rem 0.8rem; }
-  }
-
-  @media (max-width: 400px) {
-    .reels-grid { grid-template-columns: 1fr 1fr; }
-    .hero-cta { flex-direction: column; }
+    /* modal mobile */
+    .modal-wrapper { flex-direction: column; gap: 0; max-width: 100%; }
+    .modal-wrapper.vertical { max-width: 100%; }
+    .modal-nav { display: none; }
+    .modal-top-bar { top: -2.8rem; }
+    .hero-cta { flex-direction: column; gap: 0.8rem; }
     .btn-primary, .btn-outline { text-align: center; }
+  }
+  @media (max-width: 400px) {
+    .reels-carousel .video-card { flex: 0 0 85vw; }
   }
 </style>
 </head>
 <body>
 
-<!-- MODAL DE VIDEO -->
-<div class="modal-overlay" id="videoModal" onclick="cerrarModal(event)">
-  <div class="modal-inner" id="modalInner">
-    <button class="modal-cerrar" onclick="cerrarModalBtn()">✕ cerrar</button>
-    <div class="modal-video">
-      <iframe id="modalIframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+<!-- MODAL DE VIDEO CON NAVEGACIÓN -->
+<div class="modal-overlay" id="videoModal" onclick="cerrarModalFondo(event)">
+  <div class="modal-wrapper" id="modalWrapper">
+    <button class="modal-nav" id="modalPrev" onclick="navegarModal(-1)" aria-label="Anterior">&#8592;</button>
+    <div class="modal-inner">
+      <div class="modal-top-bar">
+        <span class="modal-info" id="modalInfo"></span>
+        <button class="modal-cerrar" onclick="cerrarModalBtn()">✕ cerrar</button>
+      </div>
+      <div class="modal-video">
+        <iframe id="modalIframe" src="" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+      </div>
     </div>
+    <button class="modal-nav" id="modalNext" onclick="navegarModal(1)" aria-label="Siguiente">&#8594;</button>
   </div>
 </div>
 
@@ -268,7 +276,8 @@
       <p>Estudiante de Artes Audiovisuales con experiencia en cámara e iluminación, abordo cada proyecto desde una mirada técnica y narrativa.</p>
     </div>
     <div class="hero-cta">
-      <a href="https://franconovo2001-code.github.io/novoph/#musica" class="btn-primary">Ver portfolio</a>
+      <!-- VER TRABAJOS: baja a la primera sección -->
+      <a href="#musica" class="btn-primary">Ver trabajos</a>
       <a href="#contacto" class="btn-outline">Contacto</a>
     </div>
   </div>
@@ -308,9 +317,9 @@
     <div class="section-divider"></div>
   </div>
   <div class="grid-masonry">
-    <div class="foto-card wide"><img src="fotos/tuli mejorada.png" alt="Tuli Acosta" /><div class="foto-overlay"><span class="foto-label">Tuli Acosta</span></div></div>
-    <div class="foto-card"><img src="fotos/MAGGIE.jpg" alt="Maggie Cullen" /><div class="foto-overlay"><span class="foto-label">Maggie Cullen</span></div></div>
-    <div class="foto-card"><img src="fotos/elmato.jpg" alt="Él Mató" /><div class="foto-overlay"><span class="foto-label">Él Mató a un Policía Motorizado</span></div></div>
+    <div class="foto-card wide"><img src="fotos/por2.jpg" alt="Tuli Acosta" /><div class="foto-overlay"><span class="foto-label">Tuli Acosta</span></div></div>
+    <div class="foto-card"><img src="fotos/por1.jpg" alt="Maggie Cullen" /><div class="foto-overlay"><span class="foto-label">Maggie Cullen</span></div></div>
+    <div class="foto-card"><img src="fotos/por4.jpg" alt="Él Mató" /><div class="foto-overlay"><span class="foto-label">Él Mató a un Policía Motorizado</span></div></div>
     <div class="foto-card"><img src="fotos/por3.jpg" alt="Público" /><div class="foto-overlay"><span class="foto-label">El público</span></div></div>
     <div class="foto-card"><img src="fotos/POR 5.jpg" alt="Cantante rojo" /><div class="foto-overlay"><span class="foto-label">Momento íntimo</span></div></div>
     <div class="foto-card"><img src="fotos/POR 7.jpg" alt="Luz morada" /><div class="foto-overlay"><span class="foto-label">Luz & emoción</span></div></div>
@@ -367,7 +376,7 @@
     <div class="foto-card wide"><img src="fotos/com4.jpg" alt="bnhl remeras" /><div class="foto-overlay"><span class="foto-label">Sesión de moda — bnhl</span></div></div>
     <div class="foto-card"><img src="fotos/com2.jpeg" alt="bnhl hoodie" /><div class="foto-overlay"><span class="foto-label">Sesión de moda — bnhl</span></div></div>
     <div class="foto-card"><img src="fotos/com3.jpg" alt="Coolskin" /><div class="foto-overlay"><span class="foto-label">Producto — Coolskin</span></div></div>
-    <div class="foto-card wide"><img src="fotos/com1.jpg" alt="Hydra Glowy Woman" /><div class="foto-overlay"><span class="foto-label">Producto cosmético</span></div></div>
+    <div class="foto-card wide"><img src="fotos/com1.jpg" alt="Hydra Glowy" /><div class="foto-overlay"><span class="foto-label">Producto cosmético</span></div></div>
   </div>
 </section>
 
@@ -411,52 +420,81 @@
     </div>
     <div class="section-divider"></div>
   </div>
+
   <p class="subsection-label">Reels & cortes</p>
-  <div class="reels-grid">
-    <div class="video-card" onclick="abrirModal('tK4BwIVccDw', true)">
+
+  <!-- GRILLA DESKTOP -->
+  <div class="reels-grid" id="reelsGrid">
+    <div class="video-card" onclick="abrirModal('reels',0)">
       <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada eze.jpg" alt="Reel 1" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 1</p></div>
     </div>
-    <div class="video-card" onclick="abrirModal('9UHHsDifw1Q', true)">
+    <div class="video-card" onclick="abrirModal('reels',1)">
       <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada ara.png" alt="Reel 2" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 2</p></div>
     </div>
-    <div class="video-card" onclick="abrirModal('bxBGeUXFEZY', true)">
+    <div class="video-card" onclick="abrirModal('reels',2)">
       <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada mateo.png" alt="Reel 3" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 3</p></div>
     </div>
-    <div class="video-card" onclick="abrirModal('waZzCSAWo1E', true)">
+    <div class="video-card" onclick="abrirModal('reels',3)">
       <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada german.png" alt="Reel 4" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 4</p></div>
     </div>
-    <div class="video-card" onclick="abrirModal('EtblfKGaw3U', true)">
+    <div class="video-card" onclick="abrirModal('reels',4)">
       <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada poggi.png" alt="Reel 5" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 5</p></div>
     </div>
   </div>
+
+  <!-- CARRUSEL MOBILE -->
+  <div class="reels-carousel" id="reelsCarousel">
+    <div class="video-card" onclick="abrirModal('reels',0)">
+      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada eze.jpg" alt="Reel 1" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 1</p></div>
+    </div>
+    <div class="video-card" onclick="abrirModal('reels',1)">
+      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada ara.png" alt="Reel 2" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 2</p></div>
+    </div>
+    <div class="video-card" onclick="abrirModal('reels',2)">
+      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada mateo.png" alt="Reel 3" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 3</p></div>
+    </div>
+    <div class="video-card" onclick="abrirModal('reels',3)">
+      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada german.png" alt="Reel 4" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 4</p></div>
+    </div>
+    <div class="video-card" onclick="abrirModal('reels',4)">
+      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada poggi.png" alt="Reel 5" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 5</p></div>
+    </div>
+  </div>
+  <div class="carousel-dots" id="carouselDots"></div>
+
   <p class="subsection-label">Videos institucionales</p>
   <div class="audio-grid" style="grid-template-columns:repeat(3,1fr);">
-    <div class="video-card" onclick="abrirModal('UwlUJwg91dM', false)">
+    <div class="video-card" onclick="abrirModal('institucionales',0)">
       <div class="video-thumb"><img src="https://img.youtube.com/vi/UwlUJwg91dM/hqdefault.jpg" alt="Scania" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Video institucional</p><p class="video-titulo">Scania — Apertura & cierre de mercado</p></div>
     </div>
-    <div class="video-card" onclick="abrirModal('BLrmCGCQ8qs', false)">
+    <div class="video-card" onclick="abrirModal('institucionales',1)">
       <div class="video-thumb"><img src="https://img.youtube.com/vi/BLrmCGCQ8qs/hqdefault.jpg" alt="YPF" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Video institucional</p><p class="video-titulo">YPF — Fin de año & Evolution</p></div>
     </div>
-    <div class="video-card" onclick="abrirModal('IfOIx8Ngkrs', false)">
+    <div class="video-card" onclick="abrirModal('institucionales',2)">
       <div class="video-thumb"><img src="https://img.youtube.com/vi/IfOIx8Ngkrs/hqdefault.jpg" alt="Hay Música" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Video comercial</p><p class="video-titulo">Hay Música — Promo sponsor</p></div>
     </div>
-    <div class="video-card" onclick="abrirModal('bYWzdBnaVLI', false)">
+    <div class="video-card" onclick="abrirModal('institucionales',3)">
       <div class="video-thumb"><img src="https://img.youtube.com/vi/bYWzdBnaVLI/hqdefault.jpg" alt="Sentido Común" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Recap anual</p><p class="video-titulo">Sentido Común — Eventos 2024</p></div>
     </div>
-    <div class="video-card" onclick="abrirModal('m2MsXa9NgSY', false)">
-      <div class="video-thumb"><img src="https://img.youtube.com/vi/m2MsXa9NgSY/hqdefault.jpg" alt="FBNA Podcast" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+    <div class="video-card" onclick="abrirModal('institucionales',4)">
+      <div class="video-thumb"><img src="https://img.youtube.com/vi/m2MsXa9NgSY/hqdefault.jpg" alt="FBNA" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Edición — Intro podcast</p><p class="video-titulo">FBNA — Germán Beder</p></div>
     </div>
-    <div class="video-card" onclick="abrirModal('lDU0pUW8bx0', false)">
+    <div class="video-card" onclick="abrirModal('institucionales',5)">
       <div class="video-thumb"><img src="fotos/portada ldc.png" alt="LDC" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Edición — Video institucional</p><p class="video-titulo">LDC Dreyfus — Innovaciones</p></div>
     </div>
@@ -480,15 +518,15 @@
     <div class="section-divider"></div>
   </div>
   <div class="audio-grid">
-    <div class="video-card" onclick="abrirModal('jqLQ9lGtmp8', false)">
+    <div class="video-card" onclick="abrirModal('df',0)">
       <div class="video-thumb"><img src="https://img.youtube.com/vi/jqLQ9lGtmp8/hqdefault.jpg" alt="Café San Bernardo" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Dirección de fotografía</p><p class="video-titulo">Café San Bernardo</p></div>
     </div>
-    <div class="video-card" onclick="abrirModal('v-GSNXhVclE', false)">
+    <div class="video-card" onclick="abrirModal('df',1)">
       <div class="video-thumb"><img src="fotos/portada gf.jpeg" alt="Gran Freakorama" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Dirección de fotografía</p><p class="video-titulo">Gran Freakorama — Cortometraje</p></div>
     </div>
-    <div class="video-card" onclick="abrirModal('2Y9HniLScqs', false)">
+    <div class="video-card" onclick="abrirModal('df',2)">
       <div class="video-thumb"><img src="https://img.youtube.com/vi/2Y9HniLScqs/hqdefault.jpg" alt="Domingo" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Dirección de fotografía</p><p class="video-titulo">Domingo — Cortometraje</p></div>
     </div>
@@ -523,41 +561,37 @@
         <div class="stat"><span class="stat-label">Trabajo documental y periodístico</span></div>
         <div class="stat"><span class="stat-label">Cobertura de conciertos y eventos</span></div>
       </div>
-<div class="portfolio-link">
-  <a href="https://franconovo.myportfolio.com/"
-     target="_blank"
-     class="portfolio-btn">
-     Ver portfolio completo
-  </a>
-</div>
+      <!-- BOTÓN VER PROYECTOS — abre portfolio en nueva pestaña -->
+      <a href="https://franconovo.myportfolio.com/proyectos" target="_blank" rel="noopener" class="btn-proyectos" style="margin-top:2rem;">Ver proyectos completos ↗</a>
     </div>
     <div class="sobre-derecha">
       <div class="perfil-foto-wrap">
         <img src="fotos/perfil.jpg" alt="Franco Novo" class="perfil-foto"
           onerror="this.parentElement.innerHTML='<div class=\'perfil-placeholder\'><svg viewBox=\'0 0 24 24\' fill=\'none\' stroke=\'currentColor\' stroke-width=\'1\'><circle cx=\'12\' cy=\'8\' r=\'4\'/><path d=\'M4 20c0-4 3.6-7 8-7s8 3 8 7\'/></svg><span>Tu foto acá</span></div>'" />
       </div>
-    <div class="identidad-item">
-          <span class="identidad-num">I</span>
+      <div class="sobre-identidad">
+        <div class="identidad-item">
+          <span class="identidad-num">01</span>
           <div class="identidad-texto"><strong>Música en vivo</strong><p>Cobertura de recitales, festivales y conferencias.</p></div>
         </div>
         <div class="identidad-item">
-          <span class="identidad-num">II</span>
+          <span class="identidad-num">02</span>
           <div class="identidad-texto"><strong>Eventos</strong><p>Cobertura corporativa y social. Registro de los momentos importantes para tu marca o institución.</p></div>
         </div>
         <div class="identidad-item">
-          <span class="identidad-num">III</span>
+          <span class="identidad-num">03</span>
           <div class="identidad-texto"><strong>Comercial</strong><p>Fotografía de producto, moda y marcas.</p></div>
         </div>
         <div class="identidad-item">
-          <span class="identidad-num">IV</span>
+          <span class="identidad-num">04</span>
           <div class="identidad-texto"><strong>Documental</strong><p>Fotografía social y de archivo. Mirada que construye relato, no solo registro.</p></div>
         </div>
         <div class="identidad-item">
-          <span class="identidad-num">V</span>
+          <span class="identidad-num">05</span>
           <div class="identidad-texto"><strong>Edición</strong><p>Reels, videos institucionales y contenido digital para marcas y organizaciones.</p></div>
         </div>
         <div class="identidad-item">
-          <span class="identidad-num">VI</span>
+          <span class="identidad-num">06</span>
           <div class="identidad-texto"><strong>Dirección de fotografía</strong><p>Cámara e iluminación para cine, publicidad y producciones audiovisuales.</p></div>
         </div>
       </div>
@@ -598,7 +632,116 @@
 </footer>
 
 <script>
-  // MENÚ MOBILE
+  // ── DATOS DE VIDEOS POR GRUPO ──
+  const grupos = {
+    reels: [
+      { id: 'tK4BwIVccDw', vertical: true,  titulo: 'Reel corto 1' },
+      { id: '9UHHsDifw1Q', vertical: true,  titulo: 'Reel corto 2' },
+      { id: 'bxBGeUXFEZY', vertical: true,  titulo: 'Reel corto 3' },
+      { id: 'waZzCSAWo1E', vertical: true,  titulo: 'Reel corto 4' },
+      { id: 'EtblfKGaw3U', vertical: true,  titulo: 'Reel corto 5' },
+    ],
+    institucionales: [
+      { id: 'UwlUJwg91dM', vertical: false, titulo: 'Scania' },
+      { id: 'BLrmCGCQ8qs', vertical: false, titulo: 'YPF' },
+      { id: 'IfOIx8Ngkrs', vertical: false, titulo: 'Hay Música' },
+      { id: 'bYWzdBnaVLI', vertical: false, titulo: 'Sentido Común' },
+      { id: 'm2MsXa9NgSY', vertical: false, titulo: 'FBNA — Germán Beder' },
+      { id: 'lDU0pUW8bx0', vertical: false, titulo: 'LDC Dreyfus' },
+    ],
+    df: [
+      { id: 'jqLQ9lGtmp8', vertical: false, titulo: 'Café San Bernardo' },
+      { id: 'v-GSNXhVclE', vertical: false, titulo: 'Gran Freakorama' },
+      { id: '2Y9HniLScqs', vertical: false, titulo: 'Domingo' },
+    ],
+  };
+
+  let grupoActivo = null;
+  let indiceActivo = 0;
+
+  function abrirModal(grupo, indice) {
+    const esMovil = window.innerWidth < 768;
+    const video = grupos[grupo][indice];
+    // reels en mobile: abre YouTube directo
+    if (esMovil && video.vertical) {
+      window.open('https://youtube.com/shorts/' + video.id, '_blank');
+      return;
+    }
+    grupoActivo = grupo;
+    indiceActivo = indice;
+    cargarVideo();
+    document.getElementById('videoModal').classList.add('activo');
+    document.body.style.overflow = 'hidden';
+  }
+
+  function cargarVideo() {
+    const video = grupos[grupoActivo][indiceActivo];
+    const total = grupos[grupoActivo].length;
+    document.getElementById('modalIframe').src =
+      'https://www.youtube.com/embed/' + video.id + '?autoplay=1&rel=0';
+    document.getElementById('modalWrapper').className =
+      video.vertical ? 'modal-wrapper vertical' : 'modal-wrapper';
+    document.getElementById('modalInfo').textContent =
+      video.titulo + ' — ' + (indiceActivo + 1) + ' / ' + total;
+    document.getElementById('modalPrev').disabled = indiceActivo === 0;
+    document.getElementById('modalNext').disabled = indiceActivo === total - 1;
+  }
+
+  function navegarModal(dir) {
+    const nuevo = indiceActivo + dir;
+    const total = grupos[grupoActivo].length;
+    if (nuevo < 0 || nuevo >= total) return;
+    indiceActivo = nuevo;
+    cargarVideo();
+  }
+
+  function cerrarModalBtn() {
+    document.getElementById('modalIframe').src = '';
+    document.getElementById('videoModal').classList.remove('activo');
+    document.body.style.overflow = '';
+    grupoActivo = null;
+  }
+
+  function cerrarModalFondo(e) {
+    if (e.target === document.getElementById('videoModal')) cerrarModalBtn();
+  }
+
+  document.addEventListener('keydown', function(e) {
+    if (!grupoActivo) return;
+    if (e.key === 'Escape') cerrarModalBtn();
+    if (e.key === 'ArrowRight') navegarModal(1);
+    if (e.key === 'ArrowLeft') navegarModal(-1);
+  });
+
+  // ── CARRUSEL DOTS ──
+  function initCarousel() {
+    const carousel = document.getElementById('reelsCarousel');
+    const dotsWrap = document.getElementById('carouselDots');
+    if (!carousel || !dotsWrap) return;
+    const cards = carousel.querySelectorAll('.video-card');
+    dotsWrap.innerHTML = '';
+    cards.forEach((_, i) => {
+      const dot = document.createElement('div');
+      dot.className = 'carousel-dot' + (i === 0 ? ' activo' : '');
+      dot.onclick = () => {
+        cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
+      };
+      dotsWrap.appendChild(dot);
+    });
+    const dots = dotsWrap.querySelectorAll('.carousel-dot');
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          const idx = Array.from(cards).indexOf(entry.target);
+          dots.forEach((d, i) => d.classList.toggle('activo', i === idx));
+        }
+      });
+    }, { root: carousel, threshold: 0.6 });
+    cards.forEach(c => obs.observe(c));
+  }
+  initCarousel();
+
+  // ── MENÚ MOBILE ──
   function toggleMenu() {
     const menu = document.getElementById('navMobile');
     const btn = document.getElementById('hamburger');
@@ -611,34 +754,6 @@
     document.getElementById('hamburger').classList.remove('abierto');
     document.body.style.overflow = '';
   }
-
-  // MODAL VIDEO
-  function abrirModal(videoId, esVertical) {
-    const esMovil = window.innerWidth < 768;
-    // En mobile los reels verticales abren directo en YouTube (mejor UX)
-    if (esMovil && esVertical) {
-      window.open('https://youtube.com/shorts/' + videoId, '_blank');
-      return;
-    }
-    const modal = document.getElementById('videoModal');
-    const iframe = document.getElementById('modalIframe');
-    const inner = document.getElementById('modalInner');
-    iframe.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1&rel=0';
-    inner.className = esVertical ? 'modal-inner vertical' : 'modal-inner';
-    modal.classList.add('activo');
-    document.body.style.overflow = 'hidden';
-  }
-  function cerrarModalBtn() {
-    document.getElementById('modalIframe').src = '';
-    document.getElementById('videoModal').classList.remove('activo');
-    document.body.style.overflow = '';
-  }
-  function cerrarModal(e) {
-    if (e.target === document.getElementById('videoModal')) cerrarModalBtn();
-  }
-  document.addEventListener('keydown', function(e) {
-    if (e.key === 'Escape') cerrarModalBtn();
-  });
 </script>
 </body>
 </html>

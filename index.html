@@ -659,12 +659,15 @@
   let grupoActivo = null;
   let indiceActivo = 0;
 
-  function abrirModal(grupo, indice) {
+function abrirModal(grupo, indice) {
     const esMovil = window.innerWidth < 768;
     const video = grupos[grupo][indice];
-    // reels en mobile: abre YouTube directo
-    if (esMovil && video.vertical) {
-      window.open('https://youtube.com/shorts/' + video.id, '_blank');
+    // en mobile: todos los videos abren en YouTube directamente
+    if (esMovil) {
+      const url = video.vertical
+        ? 'https://youtube.com/shorts/' + video.id
+        : 'https://youtu.be/' + video.id;
+      window.open(url, '_blank');
       return;
     }
     grupoActivo = grupo;

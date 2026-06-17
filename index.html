@@ -671,13 +671,18 @@
       cerrarCardActiva();
     });
     card.classList.add('expandido');
+    // clave: quitamos el onclick de la card mientras está reproduciendo,
+    // así el iframe de YouTube no compite por el primer toque
+    card.removeAttribute('onclick');
   }
 
   function cerrarCardActiva() {
     if (!cardExpandida) return;
-    const { card, grupo, indice } = cardExpandida;
+    const { card, grupo, indice, videoId, esVertical } = cardExpandida;
     pintarThumb(card, grupos[grupo][indice]);
     card.classList.remove('expandido');
+    // restauramos el onclick original para poder reabrir con 1 clic
+    card.setAttribute('onclick', "reproducirVideo(this,'" + videoId + "'," + esVertical + ",'" + grupo + "'," + indice + ")");
     cardExpandida = null;
   }
 
@@ -687,17 +692,15 @@
     const info = grupos[grupo][indice];
 
     if (esMovil) {
-      // Si ya está esta misma card abierta, el click la cierra
-      if (cardExpandida && cardExpandida.card === card) {
-        cerrarCardActiva();
-        return;
-      }
-      // Si había otra card abierta, la cerramos y abrimos la nueva — 1 solo clic
-      if (cardExpandida) {
-        pintarThumb(cardExpandida.card, grupos[cardExpandida.grupo][cardExpandida.indice]);
+      // Si había otra card abierta, la cerramos primero
+      if (cardExpandida && cardExpandida.card !== card) {
+        const prev = cardExpandida;
+        pintarThumb(prev.card, grupos[prev.grupo][prev.indice]);
+        prev.card.classList.remove('expandido');
+        prev.card.setAttribute('onclick', "reproducirVideo(this,'" + prev.videoId + "'," + prev.esVertical + ",'" + prev.grupo + "'," + prev.indice + ")");
       }
       pintarIframe(card, info);
-      cardExpandida = { card: card, grupo: grupo, indice: indice };
+      cardExpandida = { card: card, grupo: grupo, indice: indice, videoId: videoId, esVertical: esVertical };
       setTimeout(function(){ card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 80);
     } else {
       // DESKTOP: modal con flechas — 1 clic abre directo

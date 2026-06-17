@@ -181,9 +181,9 @@
     nav { padding: 1rem 1.5rem; }
     .nav-links { display: none; }
     .nav-hamburger { display: flex; }
-    .hero { grid-template-columns: 1fr; min-height: 100svh; }
-    .hero-right { display: none; }
-    .hero-left { padding: 7rem 1.5rem 4rem; }
+    .hero { grid-template-columns: 1fr; min-height: 100svh; height: auto; display: flex; }
+    .hero-right { display: none !important; }
+    .hero-left { padding: 7rem 1.5rem 4rem; width: 100%; min-height: 100svh; justify-content: center; }
     .hero-title { font-size: clamp(3rem, 12vw, 4.5rem); }
     section { padding: 4rem 1.5rem; }
     .section-header { gap: 1rem; margin-bottom: 2.5rem; }
@@ -616,100 +616,97 @@
 </footer>
 
 <script>
-  // ── DATOS DE VIDEOS ──
+  // ── DATOS DE VIDEOS (con thumb para poder restaurar sin reload) ──
   const grupos = {
     reels: [
-      { id: 'tK4BwIVccDw', vertical: true,  titulo: 'Reel corto 1' },
-      { id: '9UHHsDifw1Q', vertical: true,  titulo: 'Reel corto 2' },
-      { id: 'bxBGeUXFEZY', vertical: true,  titulo: 'Reel corto 3' },
-      { id: 'waZzCSAWo1E', vertical: true,  titulo: 'Reel corto 4' },
-      { id: 'EtblfKGaw3U', vertical: true,  titulo: 'Reel corto 5' },
+      { id: 'tK4BwIVccDw', vertical: true,  titulo: 'Reel corto 1', thumb: 'fotos/portada eze.jpg' },
+      { id: '9UHHsDifw1Q', vertical: true,  titulo: 'Reel corto 2', thumb: 'fotos/portada ara.png' },
+      { id: 'bxBGeUXFEZY', vertical: true,  titulo: 'Reel corto 3', thumb: 'fotos/portada mateo.png' },
+      { id: 'waZzCSAWo1E', vertical: true,  titulo: 'Reel corto 4', thumb: 'fotos/portada german.png' },
+      { id: 'EtblfKGaw3U', vertical: true,  titulo: 'Reel corto 5', thumb: 'fotos/portada poggi.png' },
     ],
     institucionales: [
-      { id: 'UwlUJwg91dM', vertical: false, titulo: 'Scania' },
-      { id: 'BLrmCGCQ8qs', vertical: false, titulo: 'YPF' },
-      { id: 'IfOIx8Ngkrs', vertical: false, titulo: 'Hay Música' },
-      { id: 'bYWzdBnaVLI', vertical: false, titulo: 'Sentido Común' },
-      { id: 'm2MsXa9NgSY', vertical: false, titulo: 'FBNA — Germán Beder' },
-      { id: 'lDU0pUW8bx0', vertical: false, titulo: 'LDC Dreyfus' },
+      { id: 'UwlUJwg91dM', vertical: false, titulo: 'Scania', thumb: 'https://img.youtube.com/vi/UwlUJwg91dM/hqdefault.jpg' },
+      { id: 'BLrmCGCQ8qs', vertical: false, titulo: 'YPF', thumb: 'https://img.youtube.com/vi/BLrmCGCQ8qs/hqdefault.jpg' },
+      { id: 'IfOIx8Ngkrs', vertical: false, titulo: 'Hay Música', thumb: 'https://img.youtube.com/vi/IfOIx8Ngkrs/hqdefault.jpg' },
+      { id: 'bYWzdBnaVLI', vertical: false, titulo: 'Sentido Común', thumb: 'https://img.youtube.com/vi/bYWzdBnaVLI/hqdefault.jpg' },
+      { id: 'm2MsXa9NgSY', vertical: false, titulo: 'FBNA — Germán Beder', thumb: 'https://img.youtube.com/vi/m2MsXa9NgSY/hqdefault.jpg' },
+      { id: 'lDU0pUW8bx0', vertical: false, titulo: 'LDC Dreyfus', thumb: 'fotos/portada ldc.png' },
     ],
     df: [
-      { id: 'jqLQ9lGtmp8', vertical: false, titulo: 'Café San Bernardo' },
-      { id: 'v-GSNXhVclE', vertical: false, titulo: 'Gran Freakorama' },
-      { id: '2Y9HniLScqs', vertical: false, titulo: 'Domingo' },
+      { id: 'jqLQ9lGtmp8', vertical: false, titulo: 'Café San Bernardo', thumb: 'https://img.youtube.com/vi/jqLQ9lGtmp8/hqdefault.jpg' },
+      { id: 'v-GSNXhVclE', vertical: false, titulo: 'Gran Freakorama', thumb: 'fotos/portada gf.jpeg' },
+      { id: '2Y9HniLScqs', vertical: false, titulo: 'Domingo', thumb: 'https://img.youtube.com/vi/2Y9HniLScqs/hqdefault.jpg' },
     ],
   };
 
   let grupoActivo = null;
   let indiceActivo = 0;
-  let cardExpandida = null;
+  let cardExpandida = null; // referencia al <div class="video-card"> abierto en mobile
 
+  // Reconstruye el thumb original (cerrado) dentro de una card
+  function pintarThumb(card, info) {
+    const ratioStyle = info.vertical ? 'aspect-ratio:9/16;' : '';
+    const thumb = card.querySelector('.video-thumb');
+    thumb.className = 'video-thumb';
+    thumb.setAttribute('style', ratioStyle);
+    thumb.innerHTML =
+      '<img src="' + info.thumb + '" alt="' + info.titulo + '" />' +
+      '<div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>';
+  }
+
+  // Pinta el iframe reproduciendo dentro de una card
+  function pintarIframe(card, info) {
+    const ratio = info.vertical ? 'vertical' : 'horizontal';
+    const thumb = card.querySelector('.video-thumb');
+    thumb.className = 'video-thumb ' + ratio;
+    thumb.removeAttribute('style');
+    thumb.innerHTML =
+      '<div class="video-iframe-wrap">' +
+        '<iframe src="https://www.youtube.com/embed/' + info.id + '?autoplay=1&rel=0&playsinline=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>' +
+      '</div>' +
+      '<button class="video-cerrar-inline" type="button">✕ cerrar</button>';
+    thumb.querySelector('.video-cerrar-inline').addEventListener('click', function(e){
+      e.stopPropagation();
+      cerrarCardActiva();
+    });
+    card.classList.add('expandido');
+  }
+
+  function cerrarCardActiva() {
+    if (!cardExpandida) return;
+    const { card, grupo, indice } = cardExpandida;
+    pintarThumb(card, grupos[grupo][indice]);
+    card.classList.remove('expandido');
+    cardExpandida = null;
+  }
+
+  // Único punto de entrada al hacer click en una card — SIEMPRE 1 clic
   function reproducirVideo(card, videoId, esVertical, grupo, indice) {
     const esMovil = window.innerWidth < 768;
+    const info = grupos[grupo][indice];
 
     if (esMovil) {
-      // MOBILE: expandir en el lugar
-      // cerrar la que estaba abierta si es diferente
-      if (cardExpandida && cardExpandida !== card) {
-        colapsarCard(cardExpandida);
-      }
-      if (card.classList.contains('expandido')) {
-        colapsarCard(card);
+      // Si ya está esta misma card abierta, el click la cierra
+      if (cardExpandida && cardExpandida.card === card) {
+        cerrarCardActiva();
         return;
       }
-      const thumb = card.querySelector('.video-thumb');
-      const ratio = esVertical ? 'vertical' : 'horizontal';
-      thumb.className = 'video-thumb ' + ratio;
-      thumb.innerHTML = `
-        <div class="video-iframe-wrap">
-          <iframe src="https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0&playsinline=1" 
-            allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>
-        </div>
-        <button class="video-cerrar-inline" onclick="event.stopPropagation(); colapsarCard(this.closest('.video-card'))">✕ cerrar</button>
-      `;
-      card.classList.add('expandido');
-      card.onclick = null;
-      cardExpandida = card;
-      // scroll suave a la card
-      setTimeout(() => card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }), 100);
+      // Si había otra card abierta, la cerramos y abrimos la nueva — 1 solo clic
+      if (cardExpandida) {
+        pintarThumb(cardExpandida.card, grupos[cardExpandida.grupo][cardExpandida.indice]);
+      }
+      pintarIframe(card, info);
+      cardExpandida = { card: card, grupo: grupo, indice: indice };
+      setTimeout(function(){ card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 80);
     } else {
-      // DESKTOP: modal con navegación
+      // DESKTOP: modal con flechas — 1 clic abre directo
       grupoActivo = grupo;
       indiceActivo = indice;
       cargarVideoModal();
       document.getElementById('videoModal').classList.add('activo');
       document.body.style.overflow = 'hidden';
     }
-  }
-
-  function colapsarCard(card) {
-    if (!card) return;
-    const video = grupos[card._grupo] ? grupos[card._grupo][card._indice] : null;
-    const thumb = card.querySelector('.video-thumb');
-    // restaurar thumb original según la card
-    // como no guardamos el HTML original, recargamos con la imagen original
-    // buscamos el src original del img
-    card.classList.remove('expandido');
-    thumb.className = 'video-thumb';
-    // reload de la página no — restauramos con la info que tenemos
-    // la card quedará sin imagen hasta que el usuario refresque, mejor recargar el thumb
-    location.reload(); // más simple y confiable
-  }
-
-  // versión mejorada sin reload
-  function colapsarCardSinReload(card, thumbSrc, thumbAlt, esVertical, grupo, indice, videoId) {
-    if (!card) return;
-    const thumb = card.querySelector('.video-thumb');
-    const ratio = esVertical ? 'aspect-ratio:9/16;' : '';
-    thumb.className = 'video-thumb';
-    thumb.style = ratio;
-    thumb.innerHTML = `
-      <img src="${thumbSrc}" alt="${thumbAlt}" />
-      <div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>
-    `;
-    card.classList.remove('expandido');
-    card.onclick = function(){ reproducirVideo(card, videoId, esVertical, grupo, indice); };
-    cardExpandida = null;
   }
 
   // ── MODAL DESKTOP ──

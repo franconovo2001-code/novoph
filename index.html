@@ -7,7 +7,7 @@
 <meta name="description" content="Franco Novo — Fotógrafo especializado en música en vivo, eventos y proyectos documentales. Editor audiovisual. Buenos Aires, Argentina.">
 <meta property="og:title" content="Franco Novo — Fotografía & Audiovisual">
 <meta property="og:description" content="Fotógrafo especializado en música en vivo, eventos y proyectos documentales. Buenos Aires.">
-<meta property="og:image" content="fotos/por2.jpg">
+<meta property="og:image" content="fotos/tuli mejorada.png">
 <meta property="og:type" content="website">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' fill='%230a0a0a'/><text x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-family='Georgia,serif' font-size='13' font-weight='900' fill='%23C8102E'>FN</text></svg>">
@@ -26,8 +26,8 @@
   nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 3rem; background: rgba(10,10,10,0.95); backdrop-filter: blur(8px); border-bottom: 1px solid rgba(200,16,46,0.2); }
   .nav-logo { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; letter-spacing: 0.08em; color: var(--blanco); text-decoration: none; flex-shrink: 0; }
   .nav-logo span { color: var(--rojo); }
-  .nav-links { display: flex; gap: 2rem; list-style: none; }
-  .nav-links a { font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.3s; }
+  .nav-links { display: flex; gap: 1.6rem; list-style: none; }
+  .nav-links a { font-size: 0.65rem; letter-spacing: 0.12em; text-transform: uppercase; color: var(--texto-muted); text-decoration: none; transition: color 0.3s; }
   .nav-links a:hover { color: var(--rojo); }
   .nav-hamburger { display: none; flex-direction: column; gap: 5px; cursor: pointer; padding: 4px; background: none; border: none; }
   .nav-hamburger span { display: block; width: 24px; height: 2px; background: var(--blanco); transition: all 0.3s; }
@@ -82,9 +82,7 @@
   .badge-premio { position: absolute; top: 0.8rem; right: 0.8rem; background: var(--rojo); color: var(--blanco); font-size: 0.6rem; letter-spacing: 0.15em; text-transform: uppercase; padding: 0.3rem 0.6rem; }
 
   /* VIDEO CARDS */
-  .audio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
-  .reels-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; margin-bottom: 4rem; }
-  .video-card { background: var(--gris); border: 1px solid rgba(255,255,255,0.06); overflow: hidden; transition: border-color 0.3s; cursor: pointer; }
+  .video-card { background: var(--gris); border: 1px solid rgba(255,255,255,0.06); overflow: hidden; transition: border-color 0.3s; cursor: pointer; flex-shrink: 0; }
   .video-card:hover { border-color: var(--rojo); }
   .video-thumb { aspect-ratio: 16/9; background: var(--gris-medio); position: relative; display: flex; align-items: center; justify-content: center; overflow: hidden; }
   .video-thumb img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; opacity: 0.8; transition: opacity 0.3s; }
@@ -96,7 +94,7 @@
   .video-tipo { font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--rojo); margin-bottom: 0.3rem; }
   .video-titulo { font-family: 'Playfair Display', serif; font-size: 1rem; font-weight: 400; color: var(--blanco); line-height: 1.3; }
 
-  /* VIDEO EXPANDIDO EN MOBILE — se reproduce en el lugar */
+  /* VIDEO EXPANDIDO EN MOBILE */
   .video-card.expandido { cursor: default; }
   .video-card.expandido .video-thumb { height: auto; aspect-ratio: unset; }
   .video-card.expandido .video-thumb.vertical { aspect-ratio: 9/16; }
@@ -105,13 +103,26 @@
   .video-iframe-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: none; }
   .video-cerrar-inline { position: absolute; top: 0.5rem; right: 0.5rem; z-index: 10; background: rgba(200,16,46,0.9); border: none; color: white; font-size: 0.7rem; padding: 0.3rem 0.7rem; cursor: pointer; letter-spacing: 0.1em; font-family: 'DM Sans', sans-serif; text-transform: uppercase; border-radius: 2px; }
 
-  /* CARRUSEL MOBILE */
-  .reels-carousel { display: none; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 1rem; padding-bottom: 1rem; margin-bottom: 2.5rem; scrollbar-width: none; }
-  .reels-carousel::-webkit-scrollbar { display: none; }
-  .reels-carousel .video-card { flex: 0 0 72vw; scroll-snap-align: center; }
-  .carousel-dots { display: none; justify-content: center; gap: 6px; margin-bottom: 2.5rem; }
-  .carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gris-medio); border: 1px solid rgba(255,255,255,0.2); transition: background 0.3s; cursor: pointer; }
+  /* CARRUSEL UNIVERSAL (desktop y mobile) */
+  .video-carousel-wrap { position: relative; margin-bottom: 1rem; }
+  .video-carousel { display: flex; overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch; gap: 1rem; padding-bottom: 0.5rem; scrollbar-width: none; }
+  .video-carousel::-webkit-scrollbar { display: none; }
+  .video-carousel .video-card { scroll-snap-align: start; }
+  /* desktop: 4 cards visibles, cada una ~23% del ancho */
+  .video-carousel.reels-desktop .video-card { flex: 0 0 calc(20% - 0.8rem); }
+  .video-carousel.institucionales-desktop .video-card { flex: 0 0 calc(33.33% - 0.67rem); }
+  /* flechas de navegación desktop */
+  .carousel-btn { display: none; position: absolute; top: 50%; transform: translateY(-50%); z-index: 10; background: rgba(10,10,10,0.85); border: 1px solid rgba(200,16,46,0.4); color: var(--blanco); width: 40px; height: 40px; cursor: pointer; font-size: 1.1rem; align-items: center; justify-content: center; transition: all 0.2s; }
+  .carousel-btn:hover { background: var(--rojo); border-color: var(--rojo); }
+  .carousel-btn.prev { left: -20px; }
+  .carousel-btn.next { right: -20px; }
+  /* dots */
+  .carousel-dots { display: flex; justify-content: center; gap: 6px; margin-top: 1rem; margin-bottom: 2.5rem; }
+  .carousel-dot { width: 6px; height: 6px; border-radius: 50%; background: var(--gris-medio); border: 1px solid rgba(255,255,255,0.2); transition: background 0.3s; cursor: pointer; flex-shrink: 0; }
   .carousel-dot.activo { background: var(--rojo); border-color: var(--rojo); }
+
+  /* institucionales en desktop: grilla fija de 3 col */
+  .audio-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
 
   /* SOBRE MÍ */
   .sobre-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 5rem; align-items: start; }
@@ -145,7 +156,7 @@
   .contacto-valor { font-size: 1rem; color: var(--blanco); text-decoration: none; transition: color 0.3s; }
   .contacto-valor:hover { color: var(--rojo); }
 
-  /* WHATSAPP FLOTANTE */
+  /* WHATSAPP */
   .whatsapp-float { position: fixed; bottom: 1.5rem; right: 1.5rem; z-index: 200; background: #25D366; width: 52px; height: 52px; border-radius: 50%; display: flex; align-items: center; justify-content: center; box-shadow: 0 4px 16px rgba(0,0,0,0.4); transition: transform 0.2s; text-decoration: none; }
   .whatsapp-float:hover { transform: scale(1.1); }
   .whatsapp-float svg { width: 28px; height: 28px; fill: white; }
@@ -176,6 +187,12 @@
   .modal-nav:hover { background: var(--rojo); border-color: var(--rojo); }
   .modal-nav:disabled { opacity: 0.2; cursor: default; pointer-events: none; }
 
+  /* DESKTOP: mostrar flechas en carrusel */
+  @media (min-width: 769px) {
+    .video-carousel-wrap { padding: 0 24px; }
+    .carousel-btn { display: flex; }
+  }
+
   /* RESPONSIVE MOBILE */
   @media (max-width: 768px) {
     nav { padding: 1rem 1.5rem; }
@@ -194,9 +211,8 @@
     .grid-masonry.eventos { grid-template-columns: 1fr; }
     .grid-masonry.eventos .foto-card.wide { grid-column: span 1; aspect-ratio: 4/3; }
     .grid-documental { grid-template-columns: 1fr; gap: 6px; }
-    .reels-grid { display: none; }
-    .reels-carousel { display: flex; }
-    .carousel-dots { display: flex; }
+    .video-carousel.reels-desktop .video-card { flex: 0 0 72vw; }
+    .video-carousel.institucionales-desktop .video-card { flex: 0 0 80vw; }
     .audio-grid { grid-template-columns: 1fr !important; gap: 1rem; }
     .sobre-grid { grid-template-columns: 1fr; gap: 2.5rem; }
     .sobre-derecha { gap: 2rem; }
@@ -215,7 +231,7 @@
     .btn-primary, .btn-outline { text-align: center; }
   }
   @media (max-width: 400px) {
-    .reels-carousel .video-card { flex: 0 0 85vw; }
+    .video-carousel.reels-desktop .video-card { flex: 0 0 85vw; }
   }
 </style>
 </head>
@@ -242,19 +258,17 @@
 <div class="nav-mobile" id="navMobile">
   <a href="#musica" onclick="cerrarMenu()">Música</a>
   <a href="#eventos" onclick="cerrarMenu()">Eventos</a>
+  <a href="#contenido" onclick="cerrarMenu()">Creación de contenido</a>
+  <a href="#audiovisual" onclick="cerrarMenu()">Dirección de foto</a>
   <a href="#comercial" onclick="cerrarMenu()">Comercial</a>
   <a href="#documental" onclick="cerrarMenu()">Documental</a>
-  <a href="#edicion" onclick="cerrarMenu()">Edición</a>
-  <a href="#audiovisual" onclick="cerrarMenu()">Dirección de foto</a>
   <a href="#sobre-mi" onclick="cerrarMenu()">Sobre mí</a>
   <a href="#contacto" onclick="cerrarMenu()">Contacto</a>
 </div>
 
-<!-- WHATSAPP FLOTANTE -->
+<!-- WHATSAPP -->
 <a href="https://wa.me/542324672431?text=Hola%20Franco%2C%20vi%20tu%20portfolio%20y%20me%20gustar%C3%ADa%20contactarte" target="_blank" class="whatsapp-float" aria-label="Contactar por WhatsApp">
-  <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-    <path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
-  </svg>
+  <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 </a>
 
 <div class="deco-bg" aria-hidden="true">
@@ -262,7 +276,6 @@
     <path d="M-100 200 C200 50, 500 350, 800 180 S1200 400, 1600 100" stroke="white" stroke-width="1.2"/>
     <path d="M-100 600 C150 480, 400 700, 750 520 S1100 750, 1600 500" stroke="white" stroke-width="0.8"/>
     <path d="M0 900 C300 750, 600 850, 900 680 S1300 820, 1600 700" stroke="white" stroke-width="0.6"/>
-    <path d="M1200 0 C1100 150, 1300 300, 1000 500 S900 700, 1100 900" stroke="white" stroke-width="0.5"/>
     <path d="M-200 400 Q400 0 800 400 Q1200 800 1700 350" stroke="white" stroke-width="0.7"/>
     <path d="M-100 750 C300 600, 700 800, 1100 600 S1400 750, 1700 650" stroke="#C8102E" stroke-width="0.8" opacity="0.6"/>
     <path d="M200 0 C400 200, 300 500, 600 350 S900 100, 1100 300" stroke="#C8102E" stroke-width="0.5" opacity="0.4"/>
@@ -275,10 +288,10 @@
   <ul class="nav-links">
     <li><a href="#musica">Música</a></li>
     <li><a href="#eventos">Eventos</a></li>
+    <li><a href="#contenido">Contenido</a></li>
+    <li><a href="#audiovisual">Dirección de foto</a></li>
     <li><a href="#comercial">Comercial</a></li>
     <li><a href="#documental">Documental</a></li>
-    <li><a href="#edicion">Edición</a></li>
-    <li><a href="#audiovisual">Dirección de foto</a></li>
     <li><a href="#sobre-mi">Sobre mí</a></li>
     <li><a href="#contacto">Contacto</a></li>
   </ul>
@@ -294,7 +307,7 @@
     <h1 class="hero-title">Franco<br><em>Novo</em></h1>
     <div class="hero-bio">
       <p>Fotógrafo especializado en música en vivo, eventos y proyectos documentales.</p>
-      <p>Experiencia audiovisual en cámara, iluminación y edición de video con enfoque narrativo y documental.</p>
+      <p>Creación de contenido, edición de video y dirección de fotografía con enfoque narrativo.</p>
     </div>
     <div class="hero-cta">
       <a href="#musica" class="btn-primary">Ver trabajos</a>
@@ -304,14 +317,14 @@
   <div class="hero-right">
     <div style="display:grid; grid-template-rows: 60% 40%; height:100vh;">
       <div style="overflow:hidden;">
-        <img src="fotos/por2.jpg" alt="Cantante en escena" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(1.1);" />
+        <img src="fotos/tuli mejorada.png" alt="Tuli Acosta en escena" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(1.1);" />
       </div>
       <div style="display:grid; grid-template-columns:1fr 1fr; height:100%;">
         <div style="overflow:hidden;">
-          <img src="fotos/MAGGIE.jpg" alt="Cantante folklórica" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(1.1);" />
+          <img src="fotos/MAGGIE.jpg" alt="Maggie Cullen" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(1.1);" />
         </div>
         <div style="overflow:hidden;">
-          <img src="fotos/por4.jpg" alt="Guitarrista" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(1.1);" />
+          <img src="fotos/elmato.jpg" alt="Él Mató a un Policía Motorizado" style="width:100%;height:100%;object-fit:cover;filter:grayscale(20%) contrast(1.1);" />
         </div>
       </div>
     </div>
@@ -320,7 +333,7 @@
   <div class="hero-line"></div>
 </section>
 
-<!-- 01 MÚSICA -->
+<!-- 01 MÚSICA EN VIVO -->
 <section id="musica" style="position:relative;">
   <div class="section-deco" aria-hidden="true">
     <svg viewBox="0 0 1200 600" fill="none" preserveAspectRatio="xMidYMid slice">
@@ -338,7 +351,7 @@
   </div>
   <div class="grid-masonry">
     <div class="foto-card wide"><img src="fotos/tuli mejorada.png" alt="Tuli Acosta" /><div class="foto-overlay"><span class="foto-label">Tuli Acosta</span></div></div>
-    <div class="foto-card"><img src="fotos/por1.jpg" alt="Maggie Cullen" /><div class="foto-overlay"><span class="foto-label">Maggie Cullen</span></div></div>
+    <div class="foto-card"><img src="fotos/MAGGIE.jpg" alt="Maggie Cullen" /><div class="foto-overlay"><span class="foto-label">Maggie Cullen</span></div></div>
     <div class="foto-card"><img src="fotos/elmato.jpg" alt="Él Mató" /><div class="foto-overlay"><span class="foto-label">Él Mató a un Policía Motorizado</span></div></div>
     <div class="foto-card"><img src="fotos/por3.jpg" alt="Público" /><div class="foto-overlay"><span class="foto-label">El público</span></div></div>
     <div class="foto-card"><img src="fotos/POR 5.jpg" alt="Hannah Storm" /><div class="foto-overlay"><span class="foto-label">Hannah Storm</span></div></div>
@@ -365,67 +378,19 @@
     <div class="section-divider"></div>
   </div>
   <div class="grid-masonry eventos">
-    <div class="foto-card wide"><img src="fotos/por 9.jpg" alt="Evento corporativo" /><div class="foto-overlay"><span class="foto-label">Boston Scientific — OPAL</span></div></div>
-    <div class="foto-card"><img src="fotos/por 10.jpg" alt="Retrato social" /><div class="foto-overlay"><span class="foto-label">Boston Scientific — Endura</span></div></div>
+    <div class="foto-card wide"><img src="fotos/por 9.jpg" alt="Boston Scientific OPAL" /><div class="foto-overlay"><span class="foto-label">Boston Scientific — OPAL</span></div></div>
+    <div class="foto-card"><img src="fotos/por 10.jpg" alt="Boston Scientific Endura" /><div class="foto-overlay"><span class="foto-label">Boston Scientific — Endura</span></div></div>
     <div class="foto-card"><img src="fotos/por 11.jpg" alt="German Beder" /><div class="foto-overlay"><span class="foto-label">German Beder</span></div></div>
     <div class="foto-card wide"><img src="fotos/por 12.jpg" alt="Laburatorio FBNA" /><div class="foto-overlay"><span class="foto-label">Laburatorio — Fundación Banco Nación</span></div></div>
-    <div class="foto-card wide"><img src="fotos/por 14.jpg" alt="Evento grupal" /><div class="foto-overlay"><span class="foto-label">Laburatorio — Fundación Banco Nación</span></div></div>
-    <div class="foto-card"><img src="fotos/por 15.jpg" alt="Ambiente nocturno" /><div class="foto-overlay"><span class="foto-label">Ambiente nocturno</span></div></div>
+    <div class="foto-card wide"><img src="fotos/por 14.jpg" alt="Laburatorio FBNA 2" /><div class="foto-overlay"><span class="foto-label">Laburatorio — Fundación Banco Nación</span></div></div>
+    <div class="foto-card"><img src="fotos/por 15.jpg" alt="Evento nocturno" /><div class="foto-overlay"><span class="foto-label">Ambiente nocturno</span></div></div>
     <div class="foto-card"><img src="fotos/fiesta.jpg" alt="Otto Fest" /><div class="foto-overlay"><span class="foto-label">Otto Fest</span></div></div>
     <div class="foto-card wide"><img src="fotos/por 13.jpg" alt="Panelista" /><div class="foto-overlay"><span class="foto-label">Panelista</span></div></div>
   </div>
 </section>
 
-<!-- 03 COMERCIAL -->
-<section id="comercial" style="position:relative;">
-  <div class="section-deco" aria-hidden="true">
-    <svg viewBox="0 0 1200 600" fill="none" preserveAspectRatio="xMidYMid slice">
-      <path d="M0 200 C300 50, 600 300, 900 150 S1200 300, 1400 100" stroke="white" stroke-width="0.7" opacity="0.05"/>
-      <path d="M-100 500 C200 350, 500 500, 800 350 S1100 480, 1400 300" stroke="#C8102E" stroke-width="0.6" opacity="0.1"/>
-    </svg>
-  </div>
-  <div class="section-header">
-    <span class="section-number">03</span>
-    <div class="section-title-group">
-      <p class="section-eyebrow">Marcas, producto & moda</p>
-      <h2 class="section-title">Comercial</h2>
-    </div>
-    <div class="section-divider"></div>
-  </div>
-  <div class="grid-masonry">
-    <div class="foto-card wide"><img src="fotos/com4.jpg" alt="bnhl remeras" /><div class="foto-overlay"><span class="foto-label">Sesión de moda — bnhl</span></div></div>
-    <div class="foto-card"><img src="fotos/com2.jpeg" alt="bnhl hoodie" /><div class="foto-overlay"><span class="foto-label">Sesión de moda — bnhl</span></div></div>
-    <div class="foto-card"><img src="fotos/com3.jpg" alt="Coolskin" /><div class="foto-overlay"><span class="foto-label">Producto — Coolskin</span></div></div>
-    <div class="foto-card wide"><img src="fotos/com1.jpg" alt="Hydra Glowy" /><div class="foto-overlay"><span class="foto-label">Hydra Glowy Woman</span></div></div>
-  </div>
-</section>
-
-<!-- 04 DOCUMENTAL -->
-<section id="documental" style="background: var(--gris); padding-top: 7rem; padding-bottom: 7rem; position:relative;">
-  <div class="section-deco" aria-hidden="true">
-    <svg viewBox="0 0 1200 700" fill="none" preserveAspectRatio="xMidYMid slice">
-      <path d="M0 150 C300 300, 600 100, 900 280 S1150 500, 1300 350" stroke="white" stroke-width="0.9" opacity="0.055"/>
-      <path d="M-100 350 Q300 150 700 400 Q1100 650 1400 300" stroke="#C8102E" stroke-width="0.8" opacity="0.12"/>
-    </svg>
-  </div>
-  <div class="section-header">
-    <span class="section-number">04</span>
-    <div class="section-title-group">
-      <p class="section-eyebrow">Fotografía documental & social</p>
-      <h2 class="section-title">Documental</h2>
-    </div>
-    <div class="section-divider"></div>
-  </div>
-  <div class="grid-documental">
-    <div class="foto-card" style="position:relative;"><img src="fotos/por 16.jpg" alt="Nunca más" /><div class="foto-overlay"><span class="foto-label">Nunca más</span></div><span class="badge-premio">★ Selección arte joven</span></div>
-    <div class="foto-card" style="position:relative;"><img src="fotos/por 17.jpg" alt="Tomados de la mano" /><div class="foto-overlay"><span class="foto-label">Tomados de la mano</span></div><span class="badge-premio">★ Mejor artista local</span></div>
-    <div class="foto-card" style="position:relative;"><img src="fotos/por 18.jpg" alt="La Quiaca" /><div class="foto-overlay"><span class="foto-label">La Quiaca — trabajo & ciudad</span></div><span class="badge-premio">★ Mención de honor</span></div>
-    <div class="foto-card"><img src="fotos/por 19.jpg" alt="Maimará" /><div class="foto-overlay"><span class="foto-label">Maimará — paisaje & memoria</span></div></div>
-  </div>
-</section>
-
-<!-- 05 EDICIÓN -->
-<section id="edicion" style="position:relative;">
+<!-- 03 CREACIÓN DE CONTENIDO & EDICIÓN -->
+<section id="contenido" style="position:relative;">
   <div class="section-deco" aria-hidden="true">
     <svg viewBox="0 0 1200 500" fill="none" preserveAspectRatio="xMidYMid slice">
       <path d="M0 250 C300 100, 600 350, 900 150 S1200 300, 1400 100" stroke="white" stroke-width="0.7" opacity="0.05"/>
@@ -433,59 +398,62 @@
     </svg>
   </div>
   <div class="section-header">
-    <span class="section-number">05</span>
+    <span class="section-number">03</span>
     <div class="section-title-group">
-      <p class="section-eyebrow">Reels, institucionales & contenido digital</p>
-      <h2 class="section-title">Edición</h2>
+      <p class="section-eyebrow">Reels, institucionales & contenido para marcas</p>
+      <h2 class="section-title">Creación de contenido & edición</h2>
     </div>
     <div class="section-divider"></div>
   </div>
+
   <p class="subsection-label">Reels & cortes</p>
-  <div class="reels-grid" id="reelsGrid">
-    <div class="video-card" onclick="reproducirVideo(this,'tK4BwIVccDw',true,'reels',0)">
-      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada eze.jpg" alt="Reel 1" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Ezequiel Salas: Luzu TV</p></div>
+  <div class="video-carousel-wrap">
+    <button class="carousel-btn prev" onclick="moverCarrusel('reelsCarousel', -1)">&#8592;</button>
+    <div class="video-carousel reels-desktop" id="reelsCarousel">
+      <div class="video-card" onclick="reproducirVideo(this,'tK4BwIVccDw',true,'reels',0)">
+        <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada eze.jpg" alt="Ezequiel Salas" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Ezequiel Salas: Luzu TV</p></div>
+      </div>
+      <div class="video-card" onclick="reproducirVideo(this,'GHvu_oRhQa4',true,'reels',1)">
+        <div class="video-thumb" style="aspect-ratio:9/16;"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div class="video-info"><p class="video-tipo">Creación de contenido</p><p class="video-titulo">Reel</p></div>
+      </div>
+      <div class="video-card" onclick="reproducirVideo(this,'9UHHsDifw1Q',true,'reels',2)">
+        <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada ara.png" alt="Ara Meniño" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Ara Meniño: Lately Cafe</p></div>
+      </div>
+      <div class="video-card" onclick="reproducirVideo(this,'W3Fz19u0HEI',true,'reels',3)">
+        <div class="video-thumb" style="aspect-ratio:9/16;"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div class="video-info"><p class="video-tipo">Creación de contenido</p><p class="video-titulo">Reel</p></div>
+      </div>
+      <div class="video-card" onclick="reproducirVideo(this,'bxBGeUXFEZY',true,'reels',4)">
+        <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada mateo.png" alt="Mateo Salvatto" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Mateo Salvatto: Asteroid</p></div>
+      </div>
+      <div class="video-card" onclick="reproducirVideo(this,'05-4PORR0fI',true,'reels',5)">
+        <div class="video-thumb" style="aspect-ratio:9/16;"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div class="video-info"><p class="video-tipo">Creación de contenido</p><p class="video-titulo">Reel</p></div>
+      </div>
+      <div class="video-card" onclick="reproducirVideo(this,'waZzCSAWo1E',true,'reels',6)">
+        <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada german.png" alt="German Beder" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">German Beder</p></div>
+      </div>
+      <div class="video-card" onclick="reproducirVideo(this,'-A3asTCMdhE',true,'reels',7)">
+        <div class="video-thumb" style="aspect-ratio:9/16;"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div class="video-info"><p class="video-tipo">Creación de contenido</p><p class="video-titulo">Reel</p></div>
+      </div>
+      <div class="video-card" onclick="reproducirVideo(this,'EtblfKGaw3U',true,'reels',8)">
+        <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada poggi.png" alt="Lucas Poggi" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Lucas Poggi: División Palermo</p></div>
+      </div>
+      <div class="video-card" onclick="reproducirVideo(this,'fzbKU14_uBw',true,'reels',9)">
+        <div class="video-thumb" style="aspect-ratio:9/16;"><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
+        <div class="video-info"><p class="video-tipo">Creación de contenido</p><p class="video-titulo">Reel</p></div>
+      </div>
     </div>
-    <div class="video-card" onclick="reproducirVideo(this,'9UHHsDifw1Q',true,'reels',1)">
-      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada ara.png" alt="Reel 2" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Ara Meniño: Lately Cafe</p></div>
-    </div>
-    <div class="video-card" onclick="reproducirVideo(this,'bxBGeUXFEZY',true,'reels',2)">
-      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada mateo.png" alt="Reel 3" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Mateo Salvatto: Asteroid</p></div>
-    </div>
-    <div class="video-card" onclick="reproducirVideo(this,'waZzCSAWo1E',true,'reels',3)">
-      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada german.png" alt="Reel 4" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">German Beder</p></div>
-    </div>
-    <div class="video-card" onclick="reproducirVideo(this,'EtblfKGaw3U',true,'reels',4)">
-      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada poggi.png" alt="Reel 5" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Lucas Poggi: División Palermo</p></div>
-    </div>
+    <button class="carousel-btn next" onclick="moverCarrusel('reelsCarousel', 1)">&#8594;</button>
   </div>
-  <div class="reels-carousel" id="reelsCarousel">
-    <div class="video-card" onclick="reproducirVideo(this,'tK4BwIVccDw',true,'reels',0)">
-      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada eze.jpg" alt="Reel 1" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 1</p></div>
-    </div>
-    <div class="video-card" onclick="reproducirVideo(this,'9UHHsDifw1Q',true,'reels',1)">
-      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada ara.png" alt="Reel 2" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 2</p></div>
-    </div>
-    <div class="video-card" onclick="reproducirVideo(this,'bxBGeUXFEZY',true,'reels',2)">
-      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada mateo.png" alt="Reel 3" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 3</p></div>
-    </div>
-    <div class="video-card" onclick="reproducirVideo(this,'waZzCSAWo1E',true,'reels',3)">
-      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada german.png" alt="Reel 4" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 4</p></div>
-    </div>
-    <div class="video-card" onclick="reproducirVideo(this,'EtblfKGaw3U',true,'reels',4)">
-      <div class="video-thumb" style="aspect-ratio:9/16;"><img src="fotos/portada poggi.png" alt="Reel 5" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
-      <div class="video-info"><p class="video-tipo">Edición</p><p class="video-titulo">Reel corto 5</p></div>
-    </div>
-  </div>
-  <div class="carousel-dots" id="carouselDots"></div>
+  <div class="carousel-dots" id="reelsDots"></div>
 
   <p class="subsection-label">Videos institucionales</p>
   <div class="audio-grid" style="grid-template-columns:repeat(3,1fr);">
@@ -516,7 +484,7 @@
   </div>
 </section>
 
-<!-- 06 DIRECCIÓN DE FOTOGRAFÍA -->
+<!-- 04 DIRECCIÓN DE FOTOGRAFÍA -->
 <section id="audiovisual" style="background: var(--gris); padding-top: 7rem; padding-bottom: 7rem; position:relative;">
   <div class="section-deco" aria-hidden="true">
     <svg viewBox="0 0 1200 500" fill="none" preserveAspectRatio="xMidYMid slice">
@@ -525,7 +493,7 @@
     </svg>
   </div>
   <div class="section-header">
-    <span class="section-number">06</span>
+    <span class="section-number">04</span>
     <div class="section-title-group">
       <p class="section-eyebrow">Cine & publicidad</p>
       <h2 class="section-title">Dirección de fotografía</h2>
@@ -537,7 +505,7 @@
       <div class="video-thumb"><img src="https://img.youtube.com/vi/jqLQ9lGtmp8/hqdefault.jpg" alt="Café San Bernardo" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Dirección de fotografía</p><p class="video-titulo">Café San Bernardo</p></div>
     </div>
-<div class="video-card" onclick="reproducirVideo(this,'1zz6HnGT0-I',false,'df',1)">
+    <div class="video-card" onclick="reproducirVideo(this,'1zz6HnGT0-I',false,'df',1)">
       <div class="video-thumb"><img src="fotos/portada gf.jpeg" alt="Gran Freakorama" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Dirección de fotografía</p><p class="video-titulo">Gran Freakorama — Cortometraje</p></div>
     </div>
@@ -545,6 +513,54 @@
       <div class="video-thumb"><img src="https://img.youtube.com/vi/2Y9HniLScqs/hqdefault.jpg" alt="Domingo" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div></div>
       <div class="video-info"><p class="video-tipo">Dirección de fotografía</p><p class="video-titulo">Domingo — Cortometraje</p></div>
     </div>
+  </div>
+</section>
+
+<!-- 05 FOTOGRAFÍA COMERCIAL -->
+<section id="comercial" style="position:relative;">
+  <div class="section-deco" aria-hidden="true">
+    <svg viewBox="0 0 1200 600" fill="none" preserveAspectRatio="xMidYMid slice">
+      <path d="M0 200 C300 50, 600 300, 900 150 S1200 300, 1400 100" stroke="white" stroke-width="0.7" opacity="0.05"/>
+      <path d="M-100 500 C200 350, 500 500, 800 350 S1100 480, 1400 300" stroke="#C8102E" stroke-width="0.6" opacity="0.1"/>
+    </svg>
+  </div>
+  <div class="section-header">
+    <span class="section-number">05</span>
+    <div class="section-title-group">
+      <p class="section-eyebrow">Marcas, producto & moda</p>
+      <h2 class="section-title">Fotografía comercial</h2>
+    </div>
+    <div class="section-divider"></div>
+  </div>
+  <div class="grid-masonry">
+    <div class="foto-card wide"><img src="fotos/com4.jpg" alt="bnhl remeras" /><div class="foto-overlay"><span class="foto-label">Sesión de moda — bnhl</span></div></div>
+    <div class="foto-card"><img src="fotos/com2.jpeg" alt="bnhl hoodie" /><div class="foto-overlay"><span class="foto-label">Sesión de moda — bnhl</span></div></div>
+    <div class="foto-card"><img src="fotos/com3.jpg" alt="Coolskin" /><div class="foto-overlay"><span class="foto-label">Producto — Coolskin</span></div></div>
+    <div class="foto-card wide"><img src="fotos/com1.jpg" alt="Hydra Glowy" /><div class="foto-overlay"><span class="foto-label">Hydra Glowy Woman</span></div></div>
+  </div>
+</section>
+
+<!-- 06 DOCUMENTAL -->
+<section id="documental" style="background: var(--gris); padding-top: 7rem; padding-bottom: 7rem; position:relative;">
+  <div class="section-deco" aria-hidden="true">
+    <svg viewBox="0 0 1200 700" fill="none" preserveAspectRatio="xMidYMid slice">
+      <path d="M0 150 C300 300, 600 100, 900 280 S1150 500, 1300 350" stroke="white" stroke-width="0.9" opacity="0.055"/>
+      <path d="M-100 350 Q300 150 700 400 Q1100 650 1400 300" stroke="#C8102E" stroke-width="0.8" opacity="0.12"/>
+    </svg>
+  </div>
+  <div class="section-header">
+    <span class="section-number">06</span>
+    <div class="section-title-group">
+      <p class="section-eyebrow">Fotografía documental & social</p>
+      <h2 class="section-title">Documental</h2>
+    </div>
+    <div class="section-divider"></div>
+  </div>
+  <div class="grid-documental">
+    <div class="foto-card" style="position:relative;"><img src="fotos/por 16.jpg" alt="Nunca más" /><div class="foto-overlay"><span class="foto-label">Nunca más</span></div><span class="badge-premio">★ Selección arte joven</span></div>
+    <div class="foto-card" style="position:relative;"><img src="fotos/por 17.jpg" alt="Tomados de la mano" /><div class="foto-overlay"><span class="foto-label">Tomados de la mano</span></div><span class="badge-premio">★ Mejor artista local</span></div>
+    <div class="foto-card" style="position:relative;"><img src="fotos/por 18.jpg" alt="La Quiaca" /><div class="foto-overlay"><span class="foto-label">La Quiaca — trabajo & ciudad</span></div><span class="badge-premio">★ Mención de honor</span></div>
+    <div class="foto-card"><img src="fotos/por 19.jpg" alt="Maimará" /><div class="foto-overlay"><span class="foto-label">Maimará — paisaje & memoria</span></div></div>
   </div>
 </section>
 
@@ -585,11 +601,11 @@
       </div>
       <div class="sobre-identidad">
         <div class="identidad-item"><span class="identidad-num">01</span><div class="identidad-texto"><strong>Música en vivo</strong><p>Cobertura de recitales, festivales y conferencias.</p></div></div>
-        <div class="identidad-item"><span class="identidad-num">02</span><div class="identidad-texto"><strong>Eventos</strong><p>Cobertura corporativa y social. Registro de los momentos importantes para tu marca o institución.</p></div></div>
-        <div class="identidad-item"><span class="identidad-num">03</span><div class="identidad-texto"><strong>Comercial</strong><p>Fotografía de producto, moda y marcas.</p></div></div>
-        <div class="identidad-item"><span class="identidad-num">04</span><div class="identidad-texto"><strong>Documental</strong><p>Fotografía social y de archivo. Mirada que construye relato, no solo registro.</p></div></div>
-        <div class="identidad-item"><span class="identidad-num">05</span><div class="identidad-texto"><strong>Edición</strong><p>Reels, videos institucionales y contenido digital para marcas y organizaciones.</p></div></div>
-        <div class="identidad-item"><span class="identidad-num">06</span><div class="identidad-texto"><strong>Dirección de fotografía</strong><p>Cámara e iluminación para cine, publicidad y producciones audiovisuales.</p></div></div>
+        <div class="identidad-item"><span class="identidad-num">02</span><div class="identidad-texto"><strong>Eventos</strong><p>Cobertura corporativa y social.</p></div></div>
+        <div class="identidad-item"><span class="identidad-num">03</span><div class="identidad-texto"><strong>Creación de contenido & edición</strong><p>Reels, videos institucionales y contenido para marcas — desde el rodaje hasta la entrega.</p></div></div>
+        <div class="identidad-item"><span class="identidad-num">04</span><div class="identidad-texto"><strong>Dirección de fotografía</strong><p>Cámara e iluminación para cine, publicidad y producciones audiovisuales.</p></div></div>
+        <div class="identidad-item"><span class="identidad-num">05</span><div class="identidad-texto"><strong>Fotografía comercial</strong><p>Producto, moda y marcas.</p></div></div>
+        <div class="identidad-item"><span class="identidad-num">06</span><div class="identidad-texto"><strong>Documental</strong><p>Fotografía social y de archivo.</p></div></div>
       </div>
     </div>
   </div>
@@ -616,14 +632,19 @@
 </footer>
 
 <script>
-  // ── DATOS DE VIDEOS (con thumb para poder restaurar sin reload) ──
+  // ── DATOS DE VIDEOS ──
   const grupos = {
     reels: [
-      { id: 'tK4BwIVccDw', vertical: true,  titulo: 'Reel corto 1', thumb: 'fotos/portada eze.jpg' },
-      { id: '9UHHsDifw1Q', vertical: true,  titulo: 'Reel corto 2', thumb: 'fotos/portada ara.png' },
-      { id: 'bxBGeUXFEZY', vertical: true,  titulo: 'Reel corto 3', thumb: 'fotos/portada mateo.png' },
-      { id: 'waZzCSAWo1E', vertical: true,  titulo: 'Reel corto 4', thumb: 'fotos/portada german.png' },
-      { id: 'EtblfKGaw3U', vertical: true,  titulo: 'Reel corto 5', thumb: 'fotos/portada poggi.png' },
+      { id: 'tK4BwIVccDw', vertical: true, titulo: 'Ezequiel Salas: Luzu TV', thumb: 'fotos/portada eze.jpg' },
+      { id: 'GHvu_oRhQa4', vertical: true, titulo: 'Reel', thumb: '' },
+      { id: '9UHHsDifw1Q', vertical: true, titulo: 'Ara Meniño: Lately Cafe', thumb: 'fotos/portada ara.png' },
+      { id: 'W3Fz19u0HEI', vertical: true, titulo: 'Reel', thumb: '' },
+      { id: 'bxBGeUXFEZY', vertical: true, titulo: 'Mateo Salvatto: Asteroid', thumb: 'fotos/portada mateo.png' },
+      { id: '05-4PORR0fI', vertical: true, titulo: 'Reel', thumb: '' },
+      { id: 'waZzCSAWo1E', vertical: true, titulo: 'German Beder', thumb: 'fotos/portada german.png' },
+      { id: '-A3asTCMdhE', vertical: true, titulo: 'Reel', thumb: '' },
+      { id: 'EtblfKGaw3U', vertical: true, titulo: 'Lucas Poggi: División Palermo', thumb: 'fotos/portada poggi.png' },
+      { id: 'fzbKU14_uBw', vertical: true, titulo: 'Reel', thumb: '' },
     ],
     institucionales: [
       { id: 'UwlUJwg91dM', vertical: false, titulo: 'Scania', thumb: 'https://img.youtube.com/vi/UwlUJwg91dM/hqdefault.jpg' },
@@ -642,37 +663,33 @@
 
   let grupoActivo = null;
   let indiceActivo = 0;
-  let cardExpandida = null; // referencia al <div class="video-card"> abierto en mobile
+  let cardExpandida = null;
 
-  // Reconstruye el thumb original (cerrado) dentro de una card
   function pintarThumb(card, info) {
     const ratioStyle = info.vertical ? 'aspect-ratio:9/16;' : '';
     const thumb = card.querySelector('.video-thumb');
     thumb.className = 'video-thumb';
     thumb.setAttribute('style', ratioStyle);
-    thumb.innerHTML =
-      '<img src="' + info.thumb + '" alt="' + info.titulo + '" />' +
-      '<div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>';
+    if (info.thumb) {
+      thumb.innerHTML = '<img src="' + info.thumb + '" alt="' + info.titulo + '" /><div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>';
+    } else {
+      thumb.innerHTML = '<div class="play-btn"><svg viewBox="0 0 24 24"><path d="M8 5v14l11-7z"/></svg></div>';
+    }
   }
 
-  // Pinta el iframe reproduciendo dentro de una card
   function pintarIframe(card, info) {
     const ratio = info.vertical ? 'vertical' : 'horizontal';
     const thumb = card.querySelector('.video-thumb');
     thumb.className = 'video-thumb ' + ratio;
     thumb.removeAttribute('style');
     thumb.innerHTML =
-      '<div class="video-iframe-wrap">' +
-        '<iframe src="https://www.youtube.com/embed/' + info.id + '?autoplay=1&rel=0&playsinline=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe>' +
-      '</div>' +
+      '<div class="video-iframe-wrap"><iframe src="https://www.youtube.com/embed/' + info.id + '?autoplay=1&rel=0&playsinline=1" allow="autoplay; encrypted-media; fullscreen" allowfullscreen></iframe></div>' +
       '<button class="video-cerrar-inline" type="button">✕ cerrar</button>';
     thumb.querySelector('.video-cerrar-inline').addEventListener('click', function(e){
       e.stopPropagation();
       cerrarCardActiva();
     });
     card.classList.add('expandido');
-    // clave: quitamos el onclick de la card mientras está reproduciendo,
-    // así el iframe de YouTube no compite por el primer toque
     card.removeAttribute('onclick');
   }
 
@@ -681,18 +698,14 @@
     const { card, grupo, indice, videoId, esVertical } = cardExpandida;
     pintarThumb(card, grupos[grupo][indice]);
     card.classList.remove('expandido');
-    // restauramos el onclick original para poder reabrir con 1 clic
     card.setAttribute('onclick', "reproducirVideo(this,'" + videoId + "'," + esVertical + ",'" + grupo + "'," + indice + ")");
     cardExpandida = null;
   }
 
-  // Único punto de entrada al hacer click en una card — SIEMPRE 1 clic
   function reproducirVideo(card, videoId, esVertical, grupo, indice) {
     const esMovil = window.innerWidth < 768;
     const info = grupos[grupo][indice];
-
     if (esMovil) {
-      // Si había otra card abierta, la cerramos primero
       if (cardExpandida && cardExpandida.card !== card) {
         const prev = cardExpandida;
         pintarThumb(prev.card, grupos[prev.grupo][prev.indice]);
@@ -700,10 +713,9 @@
         prev.card.setAttribute('onclick', "reproducirVideo(this,'" + prev.videoId + "'," + prev.esVertical + ",'" + prev.grupo + "'," + prev.indice + ")");
       }
       pintarIframe(card, info);
-      cardExpandida = { card: card, grupo: grupo, indice: indice, videoId: videoId, esVertical: esVertical };
+      cardExpandida = { card, grupo, indice, videoId, esVertical };
       setTimeout(function(){ card.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 80);
     } else {
-      // DESKTOP: modal con flechas — 1 clic abre directo
       grupoActivo = grupo;
       indiceActivo = indice;
       cargarVideoModal();
@@ -712,16 +724,12 @@
     }
   }
 
-  // ── MODAL DESKTOP ──
   function cargarVideoModal() {
     const video = grupos[grupoActivo][indiceActivo];
     const total = grupos[grupoActivo].length;
-    document.getElementById('modalIframe').src =
-      'https://www.youtube.com/embed/' + video.id + '?autoplay=1&rel=0';
-    document.getElementById('modalWrapper').className =
-      video.vertical ? 'modal-wrapper vertical' : 'modal-wrapper';
-    document.getElementById('modalInfo').textContent =
-      video.titulo + ' — ' + (indiceActivo + 1) + ' / ' + total;
+    document.getElementById('modalIframe').src = 'https://www.youtube.com/embed/' + video.id + '?autoplay=1&rel=0';
+    document.getElementById('modalWrapper').className = video.vertical ? 'modal-wrapper vertical' : 'modal-wrapper';
+    document.getElementById('modalInfo').textContent = video.titulo + ' — ' + (indiceActivo + 1) + ' / ' + total;
     document.getElementById('modalPrev').disabled = indiceActivo === 0;
     document.getElementById('modalNext').disabled = indiceActivo === total - 1;
   }
@@ -751,31 +759,58 @@
     if (e.key === 'ArrowLeft') navegarModal(-1);
   });
 
-  // ── CARRUSEL DOTS ──
-  function initCarousel() {
-    const carousel = document.getElementById('reelsCarousel');
-    const dotsWrap = document.getElementById('carouselDots');
-    if (!carousel || !dotsWrap) return;
+  // ── CARRUSEL con loop infinito ──
+  function initCarruselConDots(carruselId, dotsId) {
+    const carousel = document.getElementById(carruselId);
+    const dotsWrap = document.getElementById(dotsId);
+    if (!carousel) return;
     const cards = carousel.querySelectorAll('.video-card');
-    dotsWrap.innerHTML = '';
-    cards.forEach((_, i) => {
-      const dot = document.createElement('div');
-      dot.className = 'carousel-dot' + (i === 0 ? ' activo' : '');
-      dot.onclick = () => cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' });
-      dotsWrap.appendChild(dot);
-    });
-    const dots = dotsWrap.querySelectorAll('.carousel-dot');
-    const obs = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          const idx = Array.from(cards).indexOf(entry.target);
-          dots.forEach((d, i) => d.classList.toggle('activo', i === idx));
-        }
+    const total = cards.length;
+
+    // dots
+    if (dotsWrap) {
+      dotsWrap.innerHTML = '';
+      cards.forEach(function(_, i) {
+        const dot = document.createElement('div');
+        dot.className = 'carousel-dot' + (i === 0 ? ' activo' : '');
+        dot.onclick = function() { cards[i].scrollIntoView({ behavior: 'smooth', block: 'nearest', inline: 'center' }); };
+        dotsWrap.appendChild(dot);
       });
-    }, { root: carousel, threshold: 0.6 });
-    cards.forEach(c => obs.observe(c));
+      const dots = dotsWrap.querySelectorAll('.carousel-dot');
+      const obs = new IntersectionObserver(function(entries) {
+        entries.forEach(function(entry) {
+          if (entry.isIntersecting) {
+            const idx = Array.from(cards).indexOf(entry.target);
+            dots.forEach(function(d, i) { d.classList.toggle('activo', i === idx); });
+          }
+        });
+      }, { root: carousel, threshold: 0.6 });
+      cards.forEach(function(c) { obs.observe(c); });
+    }
+
+    // loop infinito: al llegar al final vuelve al inicio suavemente
+    carousel.addEventListener('scroll', function() {
+      const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+      if (carousel.scrollLeft >= maxScroll - 10) {
+        setTimeout(function() {
+          carousel.scrollTo({ left: 0, behavior: 'smooth' });
+        }, 600);
+      }
+    });
   }
-  initCarousel();
+
+  function moverCarrusel(id, dir) {
+    const carousel = document.getElementById(id);
+    if (!carousel) return;
+    const cardWidth = carousel.querySelector('.video-card').offsetWidth + 16;
+    const maxScroll = carousel.scrollWidth - carousel.clientWidth;
+    let newScroll = carousel.scrollLeft + dir * cardWidth * 3;
+    if (newScroll > maxScroll) newScroll = 0;
+    if (newScroll < 0) newScroll = maxScroll;
+    carousel.scrollTo({ left: newScroll, behavior: 'smooth' });
+  }
+
+  initCarruselConDots('reelsCarousel', 'reelsDots');
 
   // ── MENÚ MOBILE ──
   function toggleMenu() {
